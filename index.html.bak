@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ═══════════════════════════════════════════════════
+         PRIMARY META — SARVENE JETS SEO
+    ════════════════════════════════════════════════════ -->
+    <title>Private Jet Charter Nigeria | Sarvene Jets</title>
+    <meta name="description" content="Sarvene Jets — Nigeria's private aviation desk. Charter flights from Lagos and Abuja to London, Dubai, Paris, Accra and beyond. Book online or speak to an advisor. Available 24/7." />
+    <meta name="keywords" content="private jet lagos, charter flight nigeria, private aviation lagos, private jet abuja, charter flight lagos london, private jet hire nigeria, empty leg flights nigeria, jet card nigeria, corporate aviation nigeria, private jet west africa" />
+    <meta name="author" content="Sarvene Jets" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://sarvene.com/" />
+
+    <!-- ═══════════════════════════════════════════════════
+         OPEN GRAPH — SOCIAL SHARING
+    ════════════════════════════════════════════════════ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sarvene.com/" />
+    <meta property="og:title" content="Private Jet Charter Nigeria | Sarvene Jets" />
+    <meta property="og:description" content="Your private aviation desk for West Africa and the world. Empty legs, jet cards, bespoke charters. Charter flights from Lagos and Abuja — always available." />
+    <meta property="og:image" content="https://sarvene.com/og-image.jpg" />
+    <meta property="og:site_name" content="Sarvene Jets" />
+    <meta property="og:locale" content="en_NG" />
+
+    <!-- ═══════════════════════════════════════════════════
+         TWITTER / X CARD
+    ════════════════════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@sarvenejets" />
+    <meta name="twitter:title" content="Private Jet Charter Nigeria | Sarvene Jets" />
+    <meta name="twitter:description" content="Charter flights from Lagos and Abuja to London, Dubai, Paris and beyond. Instant estimates. Sarvene Jets — your private aviation desk." />
+    <meta name="twitter:image" content="https://sarvene.com/og-image.jpg" />
+
+    <!-- ═══════════════════════════════════════════════════
+         GEO & LANGUAGE TARGETING
+    ════════════════════════════════════════════════════ -->
+    <meta name="geo.region" content="NG-LA" />
+    <meta name="geo.placename" content="Lagos, Nigeria" />
+    <meta name="geo.position" content="6.5244;3.3792" />
+    <meta name="ICBM" content="6.5244, 3.3792" />
+    <link rel="alternate" hreflang="en" href="https://sarvene.com/" />
+    <link rel="alternate" hreflang="en-NG" href="https://sarvene.com/" />
+    <link rel="alternate" hreflang="en-GB" href="https://sarvene.com/" />
+
+    <!-- ═══════════════════════════════════════════════════
+         PERFORMANCE & PRECONNECT
+    ════════════════════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+    <!-- ═══════════════════════════════════════════════════
+         FAVICONS
+    ════════════════════════════════════════════════════ -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#1a1a18" />
+
+    <!-- ═══════════════════════════════════════════════════
+         STRUCTURED DATA — BUSINESS (JSON-LD)
+         Tells Google exactly what Sarvene is
+    ════════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["TravelAgency", "LocalBusiness"],
+      "name": "Sarvene Jets",
+      "alternateName": "Sarvene Corporate Jets",
+      "description": "Nigeria's private aviation desk. Charter flights from Lagos and Abuja to London, Dubai, Paris, Accra and beyond. Available 24/7.",
+      "url": "https://sarvene.com",
+      "telephone": "[INSERT PHONE]",
+      "email": "[INSERT EMAIL]",
+      "logo": "https://sarvene.com/logo.png",
+      "image": "https://sarvene.com/og-image.jpg",
+      "foundingDate": "2026",
+      "currenciesAccepted": "USD, EUR, GBP, NGN",
+      "priceRange": "$$$",
+      "openingHours": "Mo-Su 00:00-24:00",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lagos",
+        "addressRegion": "Lagos State",
+        "addressCountry": "NG"
+      },
+      "areaServed": [
+        "Nigeria", "Ghana", "Kenya", "South Africa", "Senegal",
+        "Cote d'Ivoire", "Rwanda", "Uganda", "Ethiopia", "Morocco",
+        "United Kingdom", "France", "Switzerland", "United States", "UAE"
+      ],
+      "sameAs": [
+        "https://instagram.com/sarvenejets",
+        "https://linkedin.com/company/sarvenejets",
+        "https://twitter.com/sarvenejets"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Private Aviation Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Private Jet Charter Nigeria",
+              "description": "Charter flights from Lagos and Abuja to destinations worldwide"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Empty Leg Flights West Africa",
+              "description": "Discounted repositioning flights monitored in real time"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Jet Card Membership Nigeria",
+              "description": "Annual private aviation membership — Select, Prestige and Sovereign tiers"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Helicopter Charter Lagos",
+              "description": "City transfers, offshore and remote destination helicopter charters"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Corporate Aviation Nigeria",
+              "description": "Executive charter solutions and corporate retainer programmes"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════
+         STRUCTURED DATA — ROUTES (FAQ Schema)
+         Each route appears as a rich result in Google
+    ════════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does a private jet from Lagos to London cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A private jet charter from Lagos (LOS) to London starts from approximately $65,000–$130,000 for the full aircraft depending on jet category. Midsize jets start around $65,000 and heavy jets from $95,000. Sarvene Jets provides instant estimates at sarvene.com."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much is a private jet from Lagos to Abuja?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A private jet from Lagos to Abuja starts from approximately $6,500 for a light jet. The 40-minute flight is available for same-day booking with Sarvene Jets. Instant estimates available online."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much is a private jet from Lagos to Dubai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A private jet charter from Lagos to Dubai starts from approximately $55,000–$95,000 for the full aircraft. Flight time is approximately 5.5 hours. Sarvene Jets arranges same-day bookings on this route."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What private jet companies operate in Nigeria?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sarvene Jets is Nigeria's dedicated private aviation desk, offering charter flights from Lagos and Abuja to over 180 airports worldwide including London, Dubai, Paris, Accra, and Nairobi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are empty leg flights in Nigeria?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Empty leg flights are repositioning flights that must fly regardless of passengers, typically offered at 50–75% below standard charter rates. Sarvene Jets monitors live empty leg availability across West Africa and alerts clients in real time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I book a private jet in Nigeria?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can book a private jet in Nigeria through Sarvene Jets by requesting a quote online at sarvene.com, or by speaking directly to a private advisor. Confirmed pricing is provided within the hour."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════
+         GOOGLE TAG MANAGER — insert your GTM ID below
+         Replace GTM-XXXXXXX with your actual GTM container ID
+    ════════════════════════════════════════════════════ -->
+    <!--
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    -->
+
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) — uncomment when GTM ID is ready -->
+    <!--
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

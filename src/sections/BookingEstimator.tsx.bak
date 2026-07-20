@@ -1,0 +1,402 @@
+import { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Calculator, MessageSquare, ArrowRight } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// ============================================
+// SARVENE JETS - CHARTER ESTIMATE CALCULATOR
+// Aviation standard: round up to nearest 0.5hr
+// ============================================
+
+const airportDatabase: { city: string; iata: string; country: string; lat: number; lon: number }[] = [
+  // NIGERIA
+  { city: 'Lagos', iata: 'LOS', country: 'Nigeria', lat: 6.577, lon: 3.321 },
+  { city: 'Abuja', iata: 'ABV', country: 'Nigeria', lat: 9.007, lon: 7.263 },
+  { city: 'Port Harcourt', iata: 'PHC', country: 'Nigeria', lat: 5.015, lon: 6.949 },
+  { city: 'Kano', iata: 'KAN', country: 'Nigeria', lat: 12.048, lon: 8.524 },
+  { city: 'Enugu', iata: 'ENU', country: 'Nigeria', lat: 6.474, lon: 7.562 },
+  { city: 'Owerri', iata: 'QOW', country: 'Nigeria', lat: 5.427, lon: 7.026 },
+  { city: 'Asaba', iata: 'ABB', country: 'Nigeria', lat: 6.204, lon: 6.665 },
+  { city: 'Uyo', iata: 'QUO', country: 'Nigeria', lat: 4.874, lon: 8.093 },
+  { city: 'Calabar', iata: 'CBQ', country: 'Nigeria', lat: 4.976, lon: 8.347 },
+  { city: 'Benin City', iata: 'BNI', country: 'Nigeria', lat: 6.320, lon: 5.600 },
+  { city: 'Ilorin', iata: 'ILR', country: 'Nigeria', lat: 8.440, lon: 4.493 },
+  { city: 'Maiduguri', iata: 'MIU', country: 'Nigeria', lat: 11.855, lon: 13.081 },
+  { city: 'Sokoto', iata: 'SKO', country: 'Nigeria', lat: 12.916, lon: 5.207 },
+  { city: 'Yola', iata: 'YOL', country: 'Nigeria', lat: 9.257, lon: 12.430 },
+  { city: 'Kaduna', iata: 'KAD', country: 'Nigeria', lat: 10.696, lon: 7.320 },
+  { city: 'Jos', iata: 'JOS', country: 'Nigeria', lat: 9.640, lon: 8.860 },
+  { city: 'Ibadan', iata: 'IBA', country: 'Nigeria', lat: 7.362, lon: 3.978 },
+  { city: 'Akure', iata: 'AKR', country: 'Nigeria', lat: 7.247, lon: 5.301 },
+  { city: 'Warri', iata: 'QRW', country: 'Nigeria', lat: 5.520, lon: 5.750 },
+  { city: 'Bauchi', iata: 'BCU', country: 'Nigeria', lat: 10.294, lon: 9.814 },
+  // GHANA
+  { city: 'Accra', iata: 'ACC', country: 'Ghana', lat: 5.605, lon: -0.167 },
+  { city: 'Kumasi', iata: 'KMS', country: 'Ghana', lat: 6.711, lon: -1.591 },
+  // UGANDA
+  { city: 'Kampala', iata: 'EBB', country: 'Uganda', lat: 0.315, lon: 32.581 },
+  { city: 'Entebbe', iata: 'EBB', country: 'Uganda', lat: 0.050, lon: 32.460 },
+  // RWANDA
+  { city: 'Kigali', iata: 'KGL', country: 'Rwanda', lat: -1.963, lon: 30.140 },
+  // KENYA
+  { city: 'Nairobi', iata: 'NBO', country: 'Kenya', lat: -1.319, lon: 36.925 },
+  { city: 'Mombasa', iata: 'MBA', country: 'Kenya', lat: -4.035, lon: 39.594 },
+  // SOUTH AFRICA
+  { city: 'Johannesburg', iata: 'JNB', country: 'South Africa', lat: -26.139, lon: 28.246 },
+  { city: 'Cape Town', iata: 'CPT', country: 'South Africa', lat: -33.971, lon: 18.602 },
+  // EGYPT
+  { city: 'Cairo', iata: 'CAI', country: 'Egypt', lat: 30.122, lon: 31.406 },
+  { city: 'Alexandria', iata: 'HBE', country: 'Egypt', lat: 30.918, lon: 29.696 },
+  // MOROCCO
+  { city: 'Casablanca', iata: 'CMN', country: 'Morocco', lat: 33.367, lon: -7.590 },
+  { city: 'Marrakech', iata: 'RAK', country: 'Morocco', lat: 31.606, lon: -8.036 },
+  // ETHIOPIA
+  { city: 'Addis Ababa', iata: 'ADD', country: 'Ethiopia', lat: 8.978, lon: 38.799 },
+  // WEST AFRICA
+  { city: 'Abidjan', iata: 'ABJ', country: "Cote d'Ivoire", lat: 5.261, lon: -3.926 },
+  { city: 'Dakar', iata: 'DSS', country: 'Senegal', lat: 14.670, lon: -17.073 },
+  // UAE
+  { city: 'Dubai', iata: 'DXB', country: 'UAE', lat: 25.253, lon: 55.365 },
+  { city: 'Abu Dhabi', iata: 'AUH', country: 'UAE', lat: 24.433, lon: 54.651 },
+  // QATAR
+  { city: 'Doha', iata: 'DOH', country: 'Qatar', lat: 25.273, lon: 51.608 },
+  // EUROPE
+  { city: 'London', iata: 'LHR', country: 'United Kingdom', lat: 51.470, lon: -0.461 },
+  { city: 'Paris', iata: 'CDG', country: 'France', lat: 49.009, lon: 2.548 },
+  { city: 'Geneva', iata: 'GVA', country: 'Switzerland', lat: 46.238, lon: 6.109 },
+  { city: 'Nice', iata: 'NCE', country: 'France', lat: 43.658, lon: 7.215 },
+  { city: 'Amsterdam', iata: 'AMS', country: 'Netherlands', lat: 52.310, lon: 4.768 },
+  { city: 'Frankfurt', iata: 'FRA', country: 'Germany', lat: 50.037, lon: 8.562 },
+  { city: 'Zurich', iata: 'ZRH', country: 'Switzerland', lat: 47.464, lon: 8.549 },
+  { city: 'Milan', iata: 'MXP', country: 'Italy', lat: 45.630, lon: 8.728 },
+  { city: 'Rome', iata: 'FCO', country: 'Italy', lat: 41.799, lon: 12.246 },
+  { city: 'Madrid', iata: 'MAD', country: 'Spain', lat: 40.493, lon: -3.566 },
+  // USA
+  { city: 'New York', iata: 'JFK', country: 'USA', lat: 40.641, lon: -73.778 },
+  { city: 'Miami', iata: 'MIA', country: 'USA', lat: 25.795, lon: -80.287 },
+  { city: 'Los Angeles', iata: 'LAX', country: 'USA', lat: 33.942, lon: -118.408 },
+  { city: 'Houston', iata: 'IAH', country: 'USA', lat: 29.984, lon: -95.341 },
+  { city: 'Atlanta', iata: 'ATL', country: 'USA', lat: 33.640, lon: -84.427 },
+  { city: 'Washington DC', iata: 'IAD', country: 'USA', lat: 38.953, lon: -77.456 },
+  //// ASIA
+  { city: 'Singapore', iata: 'SIN', country: 'Singapore', lat: 1.364, lon: 103.991 },
+  { city: 'Hong Kong', iata: 'HKG', country: 'Hong Kong', lat: 22.308, lon: 113.915 },
+  { city: 'Tokyo', iata: 'NRT', country: 'Japan', lat: 35.765, lon: 140.386 },
+  { city: 'Mumbai', iata: 'BOM', country: 'India', lat: 19.089, lon: 72.868 },
+  { city: 'Delhi', iata: 'DEL', country: 'India', lat: 28.556, lon: 77.100 },
+  { city: 'Bangkok', iata: 'BKK', country: 'Thailand', lat: 13.681, lon: 100.747 },
+  { city: 'Kuala Lumpur', iata: 'KUL', country: 'Malaysia', lat: 2.745, lon: 101.710 },
+  { city: 'Beijing', iata: 'PEK', country: 'China', lat: 40.080, lon: 116.584 },
+  { city: 'Shanghai', iata: 'PVG', country: 'China', lat: 31.143, lon: 121.805 },
+  { city: 'Seoul', iata: 'ICN', country: 'South Korea', lat: 37.469, lon: 126.451 },
+  { city: 'Jakarta', iata: 'CGK', country: 'Indonesia', lat: -6.126, lon: 106.656 },
+  { city: 'Bali', iata: 'DPS', country: 'Indonesia', lat: -8.748, lon: 115.167 },
+  
+];
+
+const jetCategories = [
+  { name: 'Light Jet', rate: 5500, maxHours: 3 },
+  { name: 'Midsize Jet', rate: 6500, maxHours: 5 },
+  { name: 'Heavy Jet', rate: 8000, maxHours: 8 },
+  { name: 'Ultra Long Range / VIP', rate: 16000, maxHours: 24 },
+];
+
+// Haversine distance in nautical miles
+function calculateDistanceNM(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  const R = 3440.065;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
+  return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+}
+
+// Aviation standard: round UP to nearest 0.5hr
+function roundUpHalf(hours: number): number {
+  return Math.ceil(hours * 2) / 2;
+}
+
+// Find airport by IATA code or city name — exact first, then partial
+function findAirport(input: string) {
+  const search = input.trim().toUpperCase();
+  return (
+    airportDatabase.find(a => a.iata === search) ||
+    airportDatabase.find(a => a.city.toUpperCase() === search) ||
+    airportDatabase.find(a => a.city.toUpperCase().startsWith(search) && search.length >= 2) ||
+    null
+  );
+}
+
+// Deduplicated autocomplete suggestions
+function getAutocompleteSuggestions(input: string) {
+  if (!input || input.length < 2) return [];
+  const search = input.toUpperCase();
+  const seen = new Set<string>();
+  return airportDatabase
+    .filter(a => a.city.toUpperCase().includes(search) || a.iata.includes(search))
+    .filter(a => { if (seen.has(a.iata)) return false; seen.add(a.iata); return true; })
+    .slice(0, 6)
+    .map(a => ({ label: `${a.city} (${a.iata})`, value: a.iata, city: a.city }));
+}
+
+function calculateSarveneEstimate(originInput: string, destinationInput: string) {
+  const origin = findAirport(originInput);
+  const destination = findAirport(destinationInput);
+
+  if (!origin) return { error: `"${originInput}" not recognised. Try a city name or IATA code.` };
+  if (!destination) return { error: `"${destinationInput}" not recognised. Try a city name or IATA code.` };
+  if (origin.iata === destination.iata) return { error: 'Origin and destination cannot be the same.' };
+
+  const distanceNM = calculateDistanceNM(origin.lat, origin.lon, destination.lat, destination.lon);
+  const isDomestic = origin.country === 'Nigeria' && destination.country === 'Nigeria';
+  const feeMultiplier = isDomestic ? 1.12 : 1.20;
+
+  // Step 1: Raw flight time at 400kts (light jet speed)
+  const rawFlightTime = distanceNM / 400;
+
+  // Step 2: Round UP to nearest 0.5hr — aviation standard
+  const roundedLegTime = roundUpHalf(rawFlightTime);
+
+  // Step 3: Select aircraft based on rounded one-way leg time
+  const selectedJet = jetCategories.find(j => roundedLegTime <= j.maxHours) || jetCategories[3];
+
+  // Step 4: Repositioning — double the leg time
+  const roundTripTime = roundedLegTime * 2;
+
+  // Step 5: Round UP to nearest whole hour for billing
+  const billingHours = Math.ceil(roundTripTime);
+
+  // Step 6: Final amount
+  const finalAmount = Math.round(billingHours * selectedJet.rate * feeMultiplier);
+
+  return {
+    amount: finalAmount,
+    jetName: selectedJet.name,
+    billingHours,
+    roundedLegTime,
+    originCity: origin.city,
+    destinationCity: destination.city,
+    distanceNM,
+    isDomestic,
+    disclaimer: 'Estimate includes repositioning fees to return aircraft to base.',
+  };
+}
+
+// ============================================
+// REACT COMPONENT
+// ============================================
+
+const BookingEstimator = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [from, setFrom] = useState('');
+  const [to, setTo] = useState('');
+  const [fromSuggestions, setFromSuggestions] = useState<{label:string;value:string;city:string}[]>([]);
+  const [toSuggestions, setToSuggestions] = useState<{label:string;value:string;city:string}[]>([]);
+  const [result, setResult] = useState<ReturnType<typeof calculateSarveneEstimate> | null>(null);
+  const [isCalculating, setIsCalculating] = useState(false);
+  const [showAdvisor, setShowAdvisor] = useState(false);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.estimator-panel', { opacity: 0, y: 40 }, {
+        opacity: 1, y: 0, duration: 0.8, stagger: 0.15,
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' },
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  const handleFromChange = (val: string) => {
+    setFrom(val);
+    setFromSuggestions(getAutocompleteSuggestions(val));
+    setResult(null);
+  };
+
+  const handleToChange = (val: string) => {
+    setTo(val);
+    setToSuggestions(getAutocompleteSuggestions(val));
+    setResult(null);
+  };
+
+  const selectFrom = (city: string) => { setFrom(city); setFromSuggestions([]); };
+  const selectTo = (city: string) => { setTo(city); setToSuggestions([]); };
+
+  const calculate = () => {
+    if (!from.trim() || !to.trim()) return;
+    setIsCalculating(true);
+    setResult(null);
+    setTimeout(() => {
+      setResult(calculateSarveneEstimate(from, to));
+      setIsCalculating(false);
+    }, 400);
+  };
+
+  const setRoute = (f: string, t: string) => {
+    setFrom(f); setTo(t);
+    setFromSuggestions([]); setToSuggestions([]);
+    setResult(null);
+  };
+
+  const res = result && 'amount' in result ? result : null;
+  const err = result && 'error' in result ? result.error : null;
+
+  return (
+    <section id="booking-estimator" ref={sectionRef} className="bg-sarvene-cream py-24 md:py-32">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+
+        {/* Section header */}
+        <div className="mb-14">
+          <p className="font-sans text-[11px] tracking-[0.3em] uppercase text-sarvene-black/40 mb-4">
+            Charter Estimator
+          </p>
+          <h2 className="font-serif text-4xl md:text-5xl text-sarvene-black font-normal tracking-tight mb-4">
+            Get an Instant Estimate
+          </h2>
+          <p className="font-sans text-sm text-sarvene-black/50 leading-relaxed max-w-xl">
+            Enter your departure city and destination to see a real-time charter estimate. All figures include repositioning fees. For tailored quotes, speak directly with an advisor.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-6">
+
+          {/* Estimator */}
+          <div className="estimator-panel bg-white border border-sarvene-black/6 p-8 md:p-10">
+            <div className="flex items-center gap-3 mb-8">
+              <Calculator className="w-4 h-4 text-sarvene-obsidian/50" />
+              <p className="font-sans text-[11px] tracking-[0.25em] uppercase text-sarvene-black/40">Charter Estimate</p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6 mb-8">
+              {/* Origin */}
+              <div className="relative">
+                <label className="block font-sans text-[10px] tracking-[0.2em] uppercase text-sarvene-black/40 mb-2">Origin</label>
+                <input
+                  type="text" value={from}
+                  onChange={e => handleFromChange(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && calculate()}
+                  placeholder="Lagos or LOS"
+                  className="w-full bg-transparent border-b border-sarvene-black/12 py-3 font-sans text-sm text-sarvene-black placeholder:text-sarvene-black/25 focus:border-sarvene-obsidian focus:outline-none transition-colors"
+                />
+                {fromSuggestions.length > 0 && (
+                  <div className="absolute top-full left-0 right-0 bg-white border border-sarvene-black/10 z-20 shadow-sm">
+                    {fromSuggestions.map(s => (
+                      <button key={s.value + s.city} onClick={() => selectFrom(s.city)}
+                        className="w-full text-left px-3 py-2 font-sans text-xs text-sarvene-black/70 hover:bg-sarvene-cream transition-colors">
+                        {s.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Destination */}
+              <div className="relative">
+                <label className="block font-sans text-[10px] tracking-[0.2em] uppercase text-sarvene-black/40 mb-2">Destination</label>
+                <input
+                  type="text" value={to}
+                  onChange={e => handleToChange(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && calculate()}
+                  placeholder="London or LHR"
+                  className="w-full bg-transparent border-b border-sarvene-black/12 py-3 font-sans text-sm text-sarvene-black placeholder:text-sarvene-black/25 focus:border-sarvene-obsidian focus:outline-none transition-colors"
+                />
+                {toSuggestions.length > 0 && (
+                  <div className="absolute top-full left-0 right-0 bg-white border border-sarvene-black/10 z-20 shadow-sm">
+                    {toSuggestions.map(s => (
+                      <button key={s.value + s.city} onClick={() => selectTo(s.city)}
+                        className="w-full text-left px-3 py-2 font-sans text-xs text-sarvene-black/70 hover:bg-sarvene-cream transition-colors">
+                        {s.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <button onClick={calculate} disabled={!from.trim() || !to.trim() || isCalculating}
+              className="group w-full bg-sarvene-obsidian text-sarvene-cream py-3.5 font-sans text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-sarvene-matte transition-colors flex items-center justify-center gap-2 disabled:opacity-40">
+              {isCalculating ? 'Calculating...' : <>Calculate Estimate <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" /></>}
+            </button>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <span className="font-sans text-[10px] text-sarvene-black/30">Popular:</span>
+              {[['Lagos','London'],['Lagos','Dubai'],['Lagos','Abuja'],['Lagos','Accra'],['Abuja','New York']].map(([f,t]) => (
+                <button key={`${f}-${t}`} onClick={() => setRoute(f, t)}
+                  className="font-sans text-[10px] text-sarvene-obsidian/50 hover:text-sarvene-obsidian transition-colors underline underline-offset-2 decoration-sarvene-black/10">
+                  {f}–{t}
+                </button>
+              ))}
+            </div>
+
+            {err && (
+              <div className="mt-6 p-4 border border-red-200 bg-red-50">
+                <p className="font-sans text-xs text-red-600">{err}</p>
+              </div>
+            )}
+
+            {res && (
+              <div className="mt-8 pt-6 border-t border-sarvene-black/8">
+                <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-sarvene-black/40 mb-1">Estimated Charter Cost</p>
+                <p className="font-sans text-[11px] text-sarvene-black/40 mb-3">
+                  {res.originCity} → {res.destinationCity} · {res.jetName} · {res.billingHours}hr billed
+                </p>
+                <p className="font-sans text-[11px] text-sarvene-black/30 mb-1">Starts from</p>
+                <p className="text-4xl text-sarvene-obsidian mb-1"
+                  style={{fontFamily: "'Cormorant Garamond', serif", fontWeight: 700}}>
+                  ${(res.amount ?? 0).toLocaleString()}
+                </p>
+                <p className="font-sans text-[10px] text-sarvene-black/35 mb-4 italic">
+                  {res.disclaimer}
+                </p>
+                <button
+  onClick={() => {
+    const routeField = document.querySelector('input[name="route"]') as HTMLInputElement;
+    const dateField = document.querySelector('input[name="date"]') as HTMLInputElement;
+    if (routeField) routeField.value = `${res.originCity} to ${res.destinationCity}`;
+    if (dateField) dateField.value = '';
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  }}
+  className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.15em] uppercase text-sarvene-obsidian hover:text-sarvene-matte transition-colors">
+  Request Formal Quote <ArrowRight className="w-3 h-3" />
+</button>
+              </div>
+            )}
+          </div>
+
+          {/* Advisor */}
+          <div className="estimator-panel bg-sarvene-matte p-8 md:p-10 flex flex-col">
+            <div className="flex items-center gap-3 mb-6">
+              <MessageSquare className="w-4 h-4 text-sarvene-sage/50" />
+              <p className="font-sans text-[11px] tracking-[0.25em] uppercase text-white/40">Private Advisor</p>
+            </div>
+            <h3 className="font-serif text-2xl text-white mb-4">Complex routing?</h3>
+            <p className="font-sans text-sm text-white/50 leading-relaxed mb-8">
+              Multi-leg itineraries, bespoke cargo, group coordination — our aviation advisors handle every detail.
+            </p>
+            <ul className="space-y-3 mb-10 flex-1">
+              {['Multi-leg global routing','Group charter coordination','Bespoke cargo & logistics','Airport slot procurement'].map(item => (
+                <li key={item} className="flex items-center gap-3 font-sans text-xs text-white/45">
+                  <span className="w-1 h-1 bg-sarvene-sage/50 rounded-full" />{item}
+                </li>
+              ))}
+            </ul>
+            {showAdvisor && (
+              <div className="mb-6 p-4 border border-sarvene-sage/15 bg-white/5">
+                <p className="font-sans text-xs text-white/60 leading-relaxed">
+                  Our advisors are available 24/7. Call +234 902 031 6094 or submit the charter form below.
+                </p>
+              </div>
+            )}
+            <button onClick={() => setShowAdvisor(true)}
+              className="w-full border border-white/15 text-white py-3.5 font-sans text-[11px] tracking-[0.15em] uppercase hover:bg-white hover:text-sarvene-matte transition-all">
+              Consult Advisor
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default BookingEstimator;
