@@ -45,7 +45,7 @@ const JetVsFirstClass = () => (
         <div>
           <h2 className="font-serif text-2xl text-sarvene-obsidian mb-4">The Cost Comparison — Honestly</h2>
           <p className="mb-4">First class from Lagos to London costs approximately $4,000–$7,000 per person return on Emirates, British Airways or Virgin Atlantic depending on timing. For two people, that is $8,000–$14,000.</p>
-          <p className="mb-4">A private charter on the same route starts from approximately $120,000 for a heavy jet — non-stop, private terminal, any departure time, inclusive of repositioning. For a group of eight to ten passengers, the per-person cost begins to compare more directly.</p>
+          <p className="mb-4">A private charter on the same route starts from approximately $62,000 for a heavy jet — non-stop, private terminal, any departure time, inclusive of repositioning. For a group of eight to ten passengers, the per-person cost begins to compare more directly.</p>
           <p>The cost question for private aviation is rarely individual versus group. It is total cost of the journey — including time, privacy, flexibility and what is lost or gained by each option — against the price. For a single leisure traveller, first class is often the right answer. For a business principal whose time is worth $10,000 an hour, or a delegation where discretion is non-negotiable, the calculation changes.</p>
         </div>
 

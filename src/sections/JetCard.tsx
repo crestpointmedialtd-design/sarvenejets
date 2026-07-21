@@ -62,7 +62,7 @@ const JetCard = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const touchStartX = useRef(0);
-const wheelTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.jc-heading', { opacity: 0, y: 30 }, {
@@ -72,22 +72,7 @@ const wheelTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
     }, sectionRef);
     return () => ctx.revert();
   }, []);
-useEffect(() => {
-  const el = sliderRef.current;
-  if (!el) return;
-  const handleWheel = (e: WheelEvent) => {
-    if (Math.abs(e.deltaX) < 5) return;
-    e.preventDefault();
-    if (wheelTimeout.current) return;
-    if (e.deltaX > 10) setActive(a => Math.min(a + 1, tiers.length - 1));
-    else if (e.deltaX < -10) setActive(a => Math.max(a - 1, 0));
-    wheelTimeout.current = setTimeout(() => {
-      wheelTimeout.current = null;
-    }, 500);
-  };
-  el.addEventListener('wheel', handleWheel, { passive: false });
-  return () => el.removeEventListener('wheel', handleWheel);
-}, []);
+
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -143,9 +128,9 @@ useEffect(() => {
             <h3 className="text-sarvene-black mb-3" style={{fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: '2rem'}}>{tier.name}</h3>
             <p className="font-sans text-sm text-sarvene-black/50 mb-8 leading-relaxed">{tier.description}</p>
 
-            {/* Hours in Cormorant Garamond Bold */}
+            {/* Hours figure in Montserrat — headings stay Cormorant, numbers are Montserrat */}
             <div className="mb-8">
-              <span style={{fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: '3.5rem', lineHeight: 1, color: 'var(--color-sarvene-obsidian, #1a1a18)'}}>
+              <span className="font-mont font-semibold" style={{fontSize: '3.5rem', lineHeight: 1, color: 'var(--color-sarvene-obsidian, #1a1a18)'}}>
                 {tier.hours}
               </span>
               <span className="font-sans text-sm text-sarvene-black/40 ml-3">hours / year</span>

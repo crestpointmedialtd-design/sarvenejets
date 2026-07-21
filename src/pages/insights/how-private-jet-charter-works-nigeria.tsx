@@ -76,8 +76,8 @@ const HowCharterWorks = () => (
 
         <div>
           <h2 className="font-serif text-2xl text-sarvene-obsidian mb-4">What Repositioning Means — and Why It Matters</h2>
-          <p>One of the most misunderstood aspects of private charter pricing is repositioning. When you charter an aircraft for a one-way flight, the aircraft still has to fly back to its base. That return flight — empty — is called a repositioning leg, and the client covers the cost.</p>
-          <p className="mt-4">This is standard practice across the global private aviation industry. It is why charter pricing is typically calculated on a round-trip basis even for one-way bookings. Any transparent quote will include repositioning in the total. If it does not, ask.</p>
+          <p>One of the most misunderstood aspects of private charter pricing is repositioning. When you charter an aircraft for a one-way flight, someone has to account for what the aircraft does next.</p>
+          <p className="mt-4">How that gets billed depends on the aircraft, not a single industry-wide rule. A home based aircraft — one tied to a fixed hub with a thin local network around it — genuinely does have to fly back empty or sit idle, so the client typically covers something close to a full round trip. A floating fleet aircraft, moving continuously across a wider network of hubs, is usually repositioning into its next booking rather than flying home empty, so the charge is closer to the live flight time plus a modest positioning fee. A transparent quote should tell you which model applies to your route and why, not just quote a flat total.</p>
           <p className="mt-4">The exception is empty leg flights — where an aircraft is already repositioning and you can book the return leg at a reduced rate. Sarvene Jets monitors empty leg availability across West Africa and alerts clients when relevant opportunities arise.</p>
         </div>
 

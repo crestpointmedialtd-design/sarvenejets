@@ -38,12 +38,12 @@ const CostLagosLondon = () => (
 
           <div className="border-l-2 border-gray-100 pl-5 mb-6">
             <p className="font-semibold text-sarvene-obsidian mb-1">Midsize Jet</p>
-            <p>A midsize jet can operate Lagos to London but will require a technical stop for refuelling — typically in Casablanca, Lisbon or the Canary Islands. This adds between 45 minutes and 1.5 hours to the journey. The trade-off is cost: a midsize jet is the lower-cost option on this route, starting from approximately $90,000 inclusive of repositioning. Suitable if the technical stop is operationally acceptable.</p>
+            <p>A midsize jet can operate Lagos to London but will require a technical stop for refuelling — typically in Casablanca, Lisbon or the Canary Islands. This adds between 45 minutes and 1.5 hours to the journey. The trade-off is cost: a midsize jet is the lower-cost option on this route, starting from approximately $54,000 inclusive of repositioning. Suitable if the technical stop is operationally acceptable.</p>
           </div>
 
           <div className="border-l-2 border-gray-100 pl-5 mb-6">
             <p className="font-semibold text-sarvene-obsidian mb-1">Heavy Jet — Recommended</p>
-            <p>A heavy jet is the recommended aircraft for this route. With sufficient range to fly Lagos to London non-stop, a heavy jet eliminates the refuelling stop, reduces total journey time and offers a significantly larger cabin — stand-up height, fully equipped galley, separate seating areas. Pricing starts from approximately $120,000 inclusive of repositioning. The Gulfstream G650, Falcon 7X and Challenger 650 are typical heavy jet options on this sector.</p>
+            <p>A heavy jet is the recommended aircraft for this route. With sufficient range to fly Lagos to London non-stop, a heavy jet eliminates the refuelling stop, reduces total journey time and offers a significantly larger cabin — stand-up height, fully equipped galley, separate seating areas. Pricing starts from approximately $62,000 inclusive of repositioning. The Challenger 650 and Legacy 650 are typical heavy jet options on this sector.</p>
           </div>
 
           <div className="border-l-2 border-gray-100 pl-5">

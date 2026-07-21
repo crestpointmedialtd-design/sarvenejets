@@ -10,7 +10,7 @@ const heroSlides = [
   { src: '/hero-5.jpg', alt: 'Private jet window seat view' },
 ];
 
-export default function Hero({ onRequestEstimate }: { onRequestEstimate?: (from: string, to: string, date: string) => void }) {
+export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
@@ -65,9 +65,9 @@ export default function Hero({ onRequestEstimate }: { onRequestEstimate?: (from:
             Connecting the continent to the world. On your schedule, at your altitude.
           </p>
           <div className="hero-cta flex flex-col sm:flex-row items-center gap-4">
-            <a href="#flight-form" className="group bg-white text-sarvene-black px-8 py-3.5 font-sans text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-sarvene-cream transition-colors inline-flex items-center gap-2">
-  Request a Charter <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-</a>
+            <a href="#contact" className="group bg-white text-sarvene-black px-8 py-3.5 font-sans text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-sarvene-cream transition-colors inline-flex items-center gap-2">
+              Request a Charter <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </a>
             <a href="#fleet" className="border border-white/40 text-white px-8 py-3.5 font-sans text-[11px] font-medium tracking-[0.2em] uppercase hover:bg-white/10 transition-colors">
               Explore Our Fleet
             </a>
@@ -103,21 +103,13 @@ export default function Hero({ onRequestEstimate }: { onRequestEstimate?: (from:
                 <label className="block font-sans text-[10px] tracking-[0.2em] uppercase text-sarvene-black/40 mb-2">Passengers</label>
                 <div className="flex items-center border-b border-sarvene-black/12">
                   <button type="button" onClick={() => setPassengers(Math.max(1, passengers - 1))} className="py-3 px-2 font-sans text-sm text-sarvene-black/50">-</button>
-                  <span className="flex-1 text-center font-sans text-sm text-sarvene-black py-3">{passengers} {passengers === 1 ? 'Passenger' : 'Passengers'}</span>
+                  <span className="flex-1 text-center font-sans text-sm text-sarvene-black py-3"><span className="font-mont">{passengers}</span> {passengers === 1 ? 'Passenger' : 'Passengers'}</span>
                   <button type="button" onClick={() => setPassengers(Math.min(50, passengers + 1))} className="py-3 px-2 font-sans text-sm text-sarvene-black/50">+</button>
                 </div>
               </div>
-              <button
-  type="button"
-  onClick={() => {
-    onRequestEstimate?.(from, to, date);
-    setTimeout(() => {
-      document.getElementById('booking-estimator')?.scrollIntoView({ behavior: 'smooth' });
-    }, 50);
-  }}
-  className="bg-sarvene-obsidian text-sarvene-cream py-3.5 px-6 font-sans text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-sarvene-matte transition-colors w-full md:w-auto text-center">
-  Get an Estimate
-</button>
+              <a href="#contact" className="bg-sarvene-obsidian text-sarvene-cream py-3.5 px-6 font-sans text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-sarvene-matte transition-colors w-full md:w-auto text-center">
+                Request Quote
+              </a>
             </div>
           </div>
 

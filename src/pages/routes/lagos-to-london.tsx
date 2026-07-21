@@ -1,60 +1,82 @@
 import PageLayout from '../../components/PageLayout';
-import RoutePage from '../../components/RoutePage';
+import BlogLayout from '../../components/BlogLayout';
 
-const LagosLondon = () => (
+const CostLagosLondon = () => (
   <PageLayout
-    title="Private Jet Charter Lagos to London"
-    description="Private jet charter from Lagos to London. Heavy jet recommended for non-stop service. Starts from $120,000 inclusive of repositioning. Sarvene Jets."
+    title="Cost of a Private Jet from Lagos to London"
+    description="How much does a private jet from Lagos to London cost? A complete breakdown of aircraft options, pricing factors and what to expect. Sarvene Jets."
   >
-    <RoutePage
-      from="Lagos"
-      to="London"
-      fromCode="LOS"
-      toCode="LHR"
-      flightTime="6.5 – 7 hours"
-      routeType="Intercontinental"
-      distance="4,679 km / 2,907 miles"
-      recommendedAircraft="Heavy Jet"
-      intro="Lagos to London is one of the most important intercontinental routes on the African continent. For Nigerian executives, diaspora travellers and high-net-worth individuals who move regularly between both cities, a private charter eliminates the variables that commercial travel cannot control."
-      whyRoute="London is Nigeria's most significant international business and diaspora hub. Billions in trade, investment, legal and financial transactions flow between Lagos and London annually. The individuals at the centre of those transactions — executives, legal counsel, private equity principals, political figures — require a level of discretion, flexibility and reliability that commercial aviation is structurally unable to provide. A private charter on this route means departing from the private terminal, no queues, passport control in minutes, and a cabin configured around your schedule."
-      aircraftDetails={[
-        {
-          type: 'Heavy Jet — Recommended',
-          description: 'A heavy jet is the recommended aircraft for this route. With a range of 4,000–7,500 nautical miles, a heavy jet can operate Lagos to London non-stop. Fully equipped galley, separate seating areas, stand-up cabin. Gulfstream G650, Falcon 7X and Challenger 650 are typical options. Seats 10–16 passengers.',
-        },
-        {
-          type: 'Midsize Jet',
-          description: 'A midsize jet can fly this route but will require a technical stop for refuelling, typically in Casablanca, Lisbon or the Canary Islands. This adds time to the journey. Challenger 3500, Citation Latitude and Hawker 800XP are typical options. Suitable for groups where the technical stop is acceptable.',
-        },
-        {
-          type: 'Ultra Long Range',
-          description: 'For larger groups or passengers who require multiple cabin zones, a private bedroom and shower facilities, an ultra long range jet — Global 7500 or Gulfstream G700 — offers the highest standard of intercontinental travel on this route.',
-        },
-      ]}
+    <BlogLayout
+      title="Cost of a Private Jet from Lagos to London"
+      category="Pricing"
+      readTime="5 min"
       relatedItems={[
-        { label: 'Lagos to Dubai', href: '/routes/lagos-to-dubai', type: 'route' },
-        { label: 'Lagos to Accra', href: '/routes/lagos-to-accra', type: 'route' },
-        { label: 'Cost of a Private Jet from Lagos to London', href: '/insights/cost-private-jet-lagos-to-london', type: 'insight' },
+        { label: 'Lagos to London Route', href: '/routes/lagos-to-london', type: 'route' },
+        { label: 'Lagos to Dubai Route', href: '/routes/lagos-to-dubai', type: 'route' },
+        { label: 'Cost of a Private Jet from Lagos to Dubai', href: '/insights/cost-lagos-to-dubai', type: 'insight' },
         { label: 'Private Jet vs First Class', href: '/insights/private-jet-vs-first-class', type: 'insight' },
         { label: 'Get an Instant Estimate', href: '/#booking-estimator', type: 'estimator' },
         { label: 'Request a Charter', href: '/#contact', type: 'contact' },
       ]}
-      faqs={[
-        {
-          q: 'How much does a private jet from Lagos to London cost?',
-          a: 'A heavy jet charter from Lagos to London starts from approximately $120,000, inclusive of repositioning fees. A midsize jet with a technical refuelling stop starts from approximately $90,000. Final pricing depends on aircraft type, group size and timing. Use the estimator for an instant figure or request a formal quote.',
-        },
-        {
-          q: 'Which airport in London does Sarvene Jets fly to?',
-          a: 'Most private charters from Lagos arrive at London Farnborough (EGLF) or London Luton (LTN), both of which offer dedicated private terminal facilities. London Heathrow (LHR) and London Gatwick (LGW) are also available subject to slot availability. Your advisor will confirm the optimal arrival airport based on your final destination.',
-        },
-        {
-          q: 'Do I need a visa to fly privately from Lagos to London?',
-          a: 'Yes. A valid UK visa is required for Nigerian passport holders regardless of how you travel. Sarvene Jets can coordinate with ground handlers to facilitate expedited immigration processing at the private terminal, but visa arrangement remains the passenger\'s responsibility.',
-        },
-      ]}
-    />
+    >
+      <div className="space-y-8 font-sans text-gray-600 leading-relaxed">
+        <p className="text-lg text-sarvene-obsidian leading-relaxed">
+          Lagos to London is the most consequential intercontinental private jet route in West Africa. Understanding what it costs — and what determines that cost — is the starting point for anyone seriously considering it.
+        </p>
+
+        <div>
+          <h2 className="font-serif text-2xl text-sarvene-obsidian mb-4">What Determines the Cost</h2>
+          <p className="mb-4">Private jet pricing is not a fixed number. Four variables shape every quote on this route:</p>
+          <p className="mb-3"><strong className="text-sarvene-obsidian">Aircraft category.</strong> The single biggest variable. A midsize jet costs less per hour than a heavy jet, but on a route of this distance, aircraft selection also affects whether you fly non-stop or need a fuel stop. That distinction has real implications for journey time and total cost.</p>
+          <p className="mb-3"><strong className="text-sarvene-obsidian">Repositioning fees.</strong> In private aviation, quotes reflect one-way floating-fleet positioning for long-range routes. All legitimate quotes should include this transparently.</p>
+          <p className="mb-3"><strong className="text-sarvene-obsidian">Availability and timing.</strong> Last-minute bookings on a route with limited available heavy jets in West Africa will cost more. Planning ahead gives access to better availability and stronger market positioning.</p>
+          <p><strong className="text-sarvene-obsidian">Group size and additional services.</strong> Catering upgrades, ground transfers, special handling and visa coordination all add to the final invoice. Know what is included before you accept a quote.</p>
+        </div>
+
+        <div>
+          <h2 className="font-serif text-2xl text-sarvene-obsidian mb-4">Aircraft Options on This Route</h2>
+
+          <div className="border-l-2 border-gray-100 pl-5 mb-6">
+            <p className="font-semibold text-sarvene-obsidian mb-1">Midsize Jet</p>
+            <p>A midsize jet can operate Lagos to London but will require a technical stop for refuelling — typically in Casablanca, Lisbon or the Canary Islands. This adds between 45 minutes and 1.5 hours to the journey. The trade-off is entry cost: midsize options start lower, suitable if the technical stop is operationally acceptable.</p>
+          </div>
+
+          <div className="border-l-2 border-gray-100 pl-5 mb-6">
+            <p className="font-semibold text-sarvene-obsidian mb-1">Heavy Jet — Recommended</p>
+            <p>A heavy jet is the recommended aircraft for this route. Operating non-stop from Lagos to London (such as London Farnborough), a heavy jet eliminates the refuelling stop, reduces total journey time to approximately 6 hours, and offers a significantly larger cabin — stand-up height, fully equipped galley, and separate seating areas. Pricing typically ranges between <strong>$58,410 and $67,172</strong> depending on live aircraft positioning and availability (e.g. Challenger 650 or Legacy 650).</p>
+          </div>
+
+          <div className="border-l-2 border-gray-100 pl-5">
+            <p className="font-semibold text-sarvene-obsidian mb-1">Ultra Long Range</p>
+            <p>For larger groups or those requiring maximum cabin range, private staterooms, and multiple cabin zones at altitude, an ultra long range jet — such as a Global 7500 or Gulfstream G700 — represents the highest standard on this route. Pricing reflects the ultra-long-range specification and extended cabin capacity.</p>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="font-serif text-2xl text-sarvene-obsidian mb-4">What to Ask Before You Accept a Quote</h2>
+          <p className="mb-3">Any quote for this route should answer these questions clearly:</p>
+          <ul className="space-y-2 pl-5 list-disc">
+            <li>Does the estimate reflect one-way floating-fleet positioning?</li>
+            <li>Is the aircraft non-stop or does it require a technical fuel stop?</li>
+            <li>What is included in catering — and what is extra?</li>
+            <li>Which London airport (e.g. London Farnborough, Luton, Biggin Hill) does the aircraft arrive at?</li>
+            <li>Are handling fees at both ends included?</li>
+          </ul>
+          <p className="mt-4">A well-structured quote is transparent on all of these. A vague quote is worth clarifying before proceeding.</p>
+        </div>
+
+        <div>
+          <h2 className="font-serif text-2xl text-sarvene-obsidian mb-4">Getting an Accurate Figure</h2>
+          <p>
+            Charter pricing on this route moves with availability, aircraft positioning and timing. The most accurate way to get a current figure is to use a real-time estimator or request a formal quote from an advisor with direct access to live aircraft availability.
+          </p>
+          <p className="mt-4">
+            With access to over 3,500 aircraft worldwide and strategic partnerships across aviation and hospitality, Sarvene Jets delivers private travel across six continents. Our advisors have direct operator relationships and can provide a formal quote on this route within the hour.
+          </p>
+        </div>
+      </div>
+    </BlogLayout>
   </PageLayout>
 );
 
-export default LagosLondon;
+export default CostLagosLondon;

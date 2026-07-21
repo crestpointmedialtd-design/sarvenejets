@@ -1,7 +1,5 @@
-import { useState,useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import Navigation from './components/Navigation';
-import CookieConsent from './components/CookieConsent';
 import Hero from './sections/Hero';
 import Services from './sections/Services';
 import Fleet from './sections/Fleet';
@@ -15,13 +13,19 @@ import Contact from './sections/Contact';
 import Newsletter from './sections/Newsletter';
 import Footer from './sections/Footer';
 import PopularRoutes from './sections/PopularRoutes';
+import CharterEstimatesPage from './pages/CharterEstimatesPage';
+import BeyondPage from './pages/BeyondPage';
+
 import InsightsIndex from './pages/insights/index';
+
+// Route pages
 import RoutesIndex from './pages/routes/index';
 import LagosAbuja from './pages/routes/lagos-to-abuja';
 import LagosLondon from './pages/routes/lagos-to-london';
 import LagosDubai from './pages/routes/lagos-to-dubai';
 import LagosAccra from './pages/routes/lagos-to-accra';
 import AbujaToNairobi from './pages/routes/abuja-to-nairobi';
+
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import CookiePolicy from './pages/CookiePolicy';
@@ -30,29 +34,16 @@ import CostLagosDubai from './pages/insights/cost-lagos-to-dubai';
 import HowCharterWorks from './pages/insights/how-private-jet-charter-works-nigeria';
 import JetVsFirstClass from './pages/insights/private-jet-vs-first-class';
 import BestRoutes from './pages/insights/best-private-jet-routes-lagos';
+import FloatingFleetVsHomeBased from './pages/insights/floating-fleet-vs-home-based-operators';
+
 import ScrollToTop from './components/ScrollToTop';
 
 function HomePage() {
-  const [prefillRoute, setPrefillRoute] = useState('');
-const [prefillDate, setPrefillDate] = useState('');
-const [prefillEstimator, setPrefillEstimator] = useState({ from: '', to: '' });
-useEffect(() => {
-  const sectionId = sessionStorage.getItem('scrollTo');
-  if (sectionId) {
-    sessionStorage.removeItem('scrollTo');
-    setTimeout(() => {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-    }, 1500);
-  }
-}, []);
   return (
     <div className="bg-sarvene-cream min-h-screen">
       <Navigation />
       <main>
-        <Hero onRequestEstimate={(from, to, date) => {
-  setPrefillEstimator({ from, to });
-  setPrefillDate(date);
-}} />
+        <Hero />
         <Services />
         <Fleet />
         <EmptyLegs />
@@ -61,16 +52,8 @@ useEffect(() => {
         <Network />
         <PopularRoutes />
         <Careers />
-        <BookingEstimator
-  onRequestQuote={(route, date) => {
-    setPrefillRoute(route);
-    if (date) setPrefillDate(date);
-  }}
-  prefillFrom={prefillEstimator.from}
-  prefillTo={prefillEstimator.to}
-  prefillDate={prefillDate}
-/>
-        <Contact prefillRoute={prefillRoute} prefillDate={prefillDate} />
+        <BookingEstimator />
+        <Contact />
         <Newsletter />
       </main>
       <Footer />
@@ -82,24 +65,35 @@ useEffect(() => {
 function App() {
   return (
     <BrowserRouter>
-      <CookieConsent />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/charterestimates" element={<CharterEstimatesPage />} />
+        <Route path="/beyond" element={<BeyondPage />} />
+
+        {/* Route pages */}
         <Route path="/routes" element={<RoutesIndex />} />
         <Route path="/routes/lagos-to-abuja" element={<LagosAbuja />} />
         <Route path="/routes/lagos-to-london" element={<LagosLondon />} />
         <Route path="/routes/lagos-to-dubai" element={<LagosDubai />} />
         <Route path="/routes/lagos-to-accra" element={<LagosAccra />} />
         <Route path="/routes/abuja-to-nairobi" element={<AbujaToNairobi />} />
+
+        {/* Insights index */}
         <Route path="/insights" element={<InsightsIndex />} />
+
+        {/* Legal pages */}
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />
+
+        {/* Insights / Blog pages */}
+        <Route path="/insights" element={<InsightsIndex />} />
         <Route path="/insights/cost-private-jet-lagos-to-london" element={<CostLagosLondon />} />
         <Route path="/insights/cost-private-jet-lagos-to-dubai" element={<CostLagosDubai />} />
         <Route path="/insights/how-private-jet-charter-works-nigeria" element={<HowCharterWorks />} />
         <Route path="/insights/private-jet-vs-first-class" element={<JetVsFirstClass />} />
         <Route path="/insights/best-private-jet-routes-lagos" element={<BestRoutes />} />
+        <Route path="/insights/floating-fleet-vs-home-based-operators" element={<FloatingFleetVsHomeBased />} />
       </Routes>
     </BrowserRouter>
   );

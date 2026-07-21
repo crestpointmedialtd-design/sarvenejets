@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -74,4 +74,54 @@ html {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #1B4332;
+}
+
+/* Range & Routing Calculator — route arc draw-in */
+.route-arc-draw {
+  stroke-dashoffset: 400;
+  animation: route-arc-draw-in 1.4s ease-out forwards;
+}
+@keyframes route-arc-draw-in {
+  to { stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .route-arc-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Sarvene Beyond — chrome accents and slow fade-in */
+.beyond-chrome-text {
+  background: linear-gradient(115deg, #8b8f96 0%, #e8eaed 25%, #ffffff 50%, #e8eaed 75%, #8b8f96 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.beyond-chrome-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #8b8f96 50%, transparent 100%);
+}
+.beyond-chrome-border {
+  border: 1px solid transparent;
+  border-image: linear-gradient(115deg, #6b6f76, #e8eaed, #6b6f76) 1;
+}
+.beyond-fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: beyond-fade-in-up 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes beyond-fade-in-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .beyond-fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes beyond-sheet-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }

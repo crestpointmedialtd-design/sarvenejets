@@ -4,31 +4,31 @@ import RoutePage from '../../components/RoutePage';
 const LagosDubai = () => (
   <PageLayout
     title="Private Jet Charter Lagos to Dubai"
-    description="Private jet charter from Lagos to Dubai. 6–8 hours flight time, 3,660 miles. Starts from $100,000 inclusive of repositioning. Sarvene Jets."
+    description="Private jet charter from Lagos to Dubai. 7.5 hours flight time, 3,169 NM. Starts from $80,240 inclusive of repositioning. Sarvene Jets."
   >
     <RoutePage
       from="Lagos"
       to="Dubai"
       fromCode="LOS"
-      toCode="DXB"
-      flightTime="6 – 8 hours"
+      toCode="DWC"
+      flightTime="7.5 hours (8hr billed)"
       routeType="Intercontinental"
-      distance="5,893 km / 3,662 miles"
+      distance="3,169 NM / 5,869 km"
       recommendedAircraft="Heavy Jet"
       intro="Lagos to Dubai is a route defined by commerce, investment and movement. Nigerian entrepreneurs, investors and high-net-worth families travel this corridor for trade, real estate, hospitality and business. A private charter gives full control over the journey — departure time, cabin configuration and arrival terminal."
       whyRoute="Dubai has become one of the most significant international hubs for Nigerian business and investment. Real estate transactions, commodity trading and financial services draw a consistent flow of high-net-worth Nigerians to the UAE. The route is equally relevant for personal travel — Dubai's infrastructure is among the most developed in the world, and Nigerian travellers are among its highest-spending visitors. A private charter on this route means no layovers, no connection risk and a cabin built around your requirements."
       aircraftDetails={[
         {
           type: 'Heavy Jet — Recommended',
-          description: 'A heavy jet is well-matched to this route distance. With a range of 4,000–7,500 nautical miles and a flight time of approximately 7 hours, heavy jets including the Gulfstream G650, Challenger 650 and Falcon 7X can operate this sector comfortably with a full passenger complement and luggage.',
+          description: 'A heavy jet is the optimal non-stop choice for this 3,169 NM sector. With an estimated flight time of 7.5 hours (8 hours billed), heavy jets including the Challenger 650, Legacy 650, and Gulfstream G650 operate non-stop with full passenger and luggage capacity. Estimates typically range from $80,240 to $92,276.',
         },
         {
-          type: 'Midsize Jet',
-          description: 'A midsize jet can cover this route but may require a technical fuel stop depending on the specific aircraft and payload. Flight time increases accordingly. Suitable for smaller groups where the additional stop is manageable.',
+          type: 'Midsize & Light Jets (e.g. Citation XLS, Phenom 300E)',
+          description: 'Smaller aircraft like the Citation XLS or Phenom 300E require 1 technical fuel stop on this route. Suitable for smaller groups where an additional operational stop is acceptable.',
         },
         {
           type: 'Ultra Long Range',
-          description: 'For larger delegations or those seeking the highest standard of inflight comfort, ultra long range aircraft offer multiple cabin zones, permanent bedrooms and shower facilities. The Global 7500 and Gulfstream G700 are the benchmark options on this sector.',
+          description: 'For larger delegations or those seeking maximum cabin space, ultra long range aircraft offer multiple cabin zones, staterooms, and extended operational buffers across intercontinental legs.',
         },
       ]}
       relatedItems={[
@@ -42,15 +42,15 @@ const LagosDubai = () => (
       faqs={[
         {
           q: 'How much does a private jet from Lagos to Dubai cost?',
-          a: 'Charter starts from approximately $100,000 for a heavy jet, inclusive of repositioning fees. Flight time is 6 to 8 hours depending on aircraft type and range. Use the estimator for an instant figure or speak to an advisor for a formal quote based on your specific requirements.',
+          a: 'Charter estimates for a heavy jet range between $80,240 and $92,276 based on 8 hours billed, reflecting one-way floating-fleet positioning for long-range routes. Final pricing depends on live aircraft availability and routing requirements.',
         },
         {
           q: 'Which Dubai airport does the private charter arrive at?',
-          a: 'Private charters typically arrive at Al Maktoum International Airport (DWC) or Dubai International Airport (DXB) private terminals. Dubai World Central is often preferred for private aviation due to dedicated FBO facilities. Your advisor will confirm based on your onward arrangements.',
+          a: 'Private charters typically arrive at Dubai Al Maktoum International Airport (DWC / Executive Terminal) or Dubai International Airport (DXB). DWC is preferred for private aviation due to dedicated VIP FBO facilities and fast customs clearance.',
         },
         {
           q: 'Can Sarvene Jets arrange ground transfers in Dubai?',
-          a: 'Yes. Sarvene Jets coordinates ground transfers and hotel arrangements on arrival in Dubai. Speak to your advisor at the time of booking and every detail will be handled.',
+          a: 'Yes. Sarvene Jets coordinates executive ground transfers and chauffeur arrangements upon arrival at DWC or DXB. Speak to your advisor at the time of booking.',
         },
       ]}
     />

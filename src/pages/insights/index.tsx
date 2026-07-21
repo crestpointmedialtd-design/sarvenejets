@@ -37,6 +37,13 @@ const insights = [
     excerpt: 'The routes that matter most — domestically, regionally and internationally — and what makes each one worth knowing.',
     readTime: '4 min',
   },
+  {
+    slug: '/insights/floating-fleet-vs-home-based-operators',
+    category: 'Industry',
+    title: 'Floating Fleets vs Home Based Operators: Why Charter Quotes Vary So Much',
+    excerpt: 'Why three companies can quote three different prices for the same route, and what that actually reveals about how each one prices aircraft.',
+    readTime: '6 min',
+  },
 ];
 
 const categories = ['All', 'Pricing', 'Education', 'Industry'];

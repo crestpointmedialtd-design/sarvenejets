@@ -7,7 +7,6 @@ const BestRoutesLagos = () => (
     title="The Best Private Jet Routes from Lagos"
     description="The most important private jet routes from Lagos — domestic, regional and intercontinental. Flight times, aircraft and what makes each one worth knowing. Sarvene Jets."
   >
-    
     <BlogLayout
       title="The Best Private Jet Routes from Lagos"
       category="Industry"
@@ -35,14 +34,14 @@ const BestRoutesLagos = () => (
 
         <div>
           <h2 className="font-serif text-2xl text-sarvene-obsidian mb-4">Lagos to London — The Intercontinental Flagship</h2>
-          <p className="mb-3"><strong>Flight time:</strong> 6.5–7 hours &nbsp;|&nbsp; <strong>Aircraft:</strong> Heavy jet (recommended) &nbsp;|&nbsp; <strong>Starts from:</strong> $120,000</p>
+          <p className="mb-3"><strong>Flight time:</strong> 6.5–7 hours &nbsp;|&nbsp; <strong>Aircraft:</strong> Heavy jet (recommended) &nbsp;|&nbsp; <strong>Starts from:</strong> $62,000</p>
           <p className="mb-4">London is Nigeria's most significant international business and diaspora hub. Legal, financial and commercial transactions between the two cities run into billions annually. The private individuals at the centre of those transactions require a standard of travel that commercial aviation is not built to provide.</p>
-          <p>A heavy jet on this route operates non-stop — no refuelling stop, no connection risk, full cabin. The Gulfstream G650 and Falcon 7X are the benchmark options. A midsize jet is available at a lower price point but requires a technical stop.</p>
+          <p>A heavy jet on this route operates non-stop — no refuelling stop, no connection risk, full cabin. The Challenger 650 and Legacy 650 are the benchmark options. A midsize jet is available at a lower price point but requires a technical stop.</p>
         </div>
 
         <div>
           <h2 className="font-serif text-2xl text-sarvene-obsidian mb-4">Lagos to Dubai — Commerce and Lifestyle</h2>
-          <p className="mb-3"><strong>Flight time:</strong> 6–8 hours &nbsp;|&nbsp; <strong>Aircraft:</strong> Heavy jet &nbsp;|&nbsp; <strong>Starts from:</strong> $100,000</p>
+          <p className="mb-3"><strong>Flight time:</strong> 6–8 hours &nbsp;|&nbsp; <strong>Aircraft:</strong> Heavy jet &nbsp;|&nbsp; <strong>Starts from:</strong> $75,000</p>
           <p className="mb-4">Dubai has become one of the most important international destinations for Nigerian high-net-worth travellers — for business, real estate investment, hospitality and family visits. The route is one of the busiest in West African private aviation.</p>
           <p>Flight time varies between 6 and 8 hours depending on aircraft type and routing. A heavy jet covers the distance comfortably with full payload. This is a route where aircraft selection significantly affects the inflight experience — particularly for groups of eight or more.</p>
         </div>

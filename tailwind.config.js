@@ -14,6 +14,12 @@ module.exports = {
           white: '#FFFFFF',
           black: '#0A0A0A',
         },
+        beyond: {
+          black: '#080808',
+          charcoal: '#141414',
+          chrome: '#C7CCD3',
+          chromeDim: '#6B6F76',
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -61,6 +67,7 @@ module.exports = {
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        mont: ['Montserrat', 'system-ui', 'sans-serif'],
         mono: ['"IBM Plex Mono"', 'monospace'],
       },
       borderRadius: {

@@ -123,11 +123,11 @@ const Fleet = () => {
             <div className="flex items-center gap-10 mb-8">
               <div>
                 <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-sarvene-black/35 mb-1">Passengers</p>
-                <p className="font-sans text-sm text-sarvene-black flex items-center gap-2"><Users className="w-3.5 h-3.5 text-sarvene-obsidian/40" />{current.passengers}</p>
+                <p className="font-mont text-sm text-sarvene-black flex items-center gap-2"><Users className="w-3.5 h-3.5 text-sarvene-obsidian/40" />{current.passengers}</p>
               </div>
               <div>
                 <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-sarvene-black/35 mb-1">Range</p>
-                <p className="font-sans text-sm text-sarvene-black flex items-center gap-2"><Fuel className="w-3.5 h-3.5 text-sarvene-obsidian/40" />{current.range}</p>
+                <p className="font-mont text-sm text-sarvene-black flex items-center gap-2"><Fuel className="w-3.5 h-3.5 text-sarvene-obsidian/40" />{current.range}</p>
               </div>
             </div>
 

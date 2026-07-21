@@ -4,7 +4,7 @@ import BlogLayout from '../../components/BlogLayout';
 const CostLagosDubai = () => (
   <PageLayout
     title="Cost of a Private Jet from Lagos to Dubai"
-    description="How much does a private jet from Lagos to Dubai cost? Pricing, aircraft options and key factors explained. Starts from $100,000. Sarvene Jets."
+    description="How much does a private jet from Lagos to Dubai cost? Pricing, aircraft options and key factors explained. Starts from $75,000. Sarvene Jets."
   >
     <BlogLayout
       title="Cost of a Private Jet from Lagos to Dubai"
@@ -31,8 +31,8 @@ const CostLagosDubai = () => (
 
         <div>
           <h2 className="font-serif text-2xl text-sarvene-obsidian mb-4">What the Charter Costs</h2>
-          <p className="mb-4">A private charter from Lagos to Dubai starts from approximately $100,000, inclusive of repositioning fees. That figure covers the full aircraft — not per person — and includes the cost of the aircraft returning to its base after delivery.</p>
-          <p>For a group of eight to ten passengers, that translates to approximately $10,000–$12,500 per person — comparable to a high-end first class return on a commercial carrier, but with a fundamentally different experience: private terminal, any departure time, full cabin to your party, no connections.</p>
+          <p className="mb-4">A private charter from Lagos to Dubai starts from approximately $75,000, inclusive of repositioning fees. That figure covers the full aircraft — not per person — and includes the cost of the aircraft returning to its base after delivery.</p>
+          <p>For a group of eight to ten passengers, that translates to approximately $7,500–$9,375 per person — comparable to a high-end first class return on a commercial carrier, but with a fundamentally different experience: private terminal, any departure time, full cabin to your party, no connections.</p>
         </div>
 
         <div>
@@ -40,7 +40,7 @@ const CostLagosDubai = () => (
 
           <div className="border-l-2 border-gray-100 pl-5 mb-6">
             <p className="font-semibold text-sarvene-obsidian mb-1">Heavy Jet — Recommended</p>
-            <p>At 3,660 miles, a heavy jet is the natural match for this route. It covers the distance with the right range margin, offers a full stand-up cabin with galley and separate seating areas, and carries up to 16 passengers. The Gulfstream G650, Challenger 650 and Falcon 7X are typical heavy jet options. Pricing from approximately $100,000 inclusive of repositioning.</p>
+            <p>At 3,660 miles, a heavy jet is the natural match for this route. It covers the distance with the right range margin, offers a full stand-up cabin with galley and separate seating areas, and carries up to 16 passengers. The Challenger 650 and Legacy 650 are typical heavy jet options. Pricing from approximately $75,000 inclusive of repositioning.</p>
           </div>
 
           <div className="border-l-2 border-gray-100 pl-5 mb-6">
