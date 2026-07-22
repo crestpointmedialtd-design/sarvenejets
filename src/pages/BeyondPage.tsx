@@ -112,7 +112,7 @@ function EmailGate({ onGranted }: { onGranted: () => void }) {
 // FEATURED — FLAGSHIP VIDEO HERO
 // ============================================
 function Featured() {
-  const whatsappUrl = `https://wa.me/?text=${encodeURIComponent("Hello Sarvene, I am interested in applying for access to the Summer Gathering at Sea.")}`;
+  const whatsappUrl = `https://wa.me/2349020316094?text=${encodeURIComponent("Hello Sarvene, I am interested in applying for access to the Summer Gathering at Sea.")}`;
 
   return (
     <FadeInSection className="relative w-full h-[85vh] min-h-[560px] bg-black">
@@ -268,7 +268,7 @@ function Categories() {
 
   const currentDetail = activeCategory ? CATEGORY_DETAILS[activeCategory] : null;
   const whatsappUrl = currentDetail 
-    ? `https://wa.me/?text=${encodeURIComponent(`Hello Sarvene, I would like to request an arrangement for: ${currentDetail.title}`)}`
+    ? `https://wa.me/2349020316094?text=${encodeURIComponent(`Hello Sarvene, I would like to request an arrangement for: ${currentDetail.title}`)}`
     : '';
 
   return (
@@ -395,7 +395,7 @@ function HouseExperiences() {
       </h2>
       <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {houseExperiences.map((item) => {
-          const waUrl = `https://wa.me/?text=${encodeURIComponent(`Hello Sarvene, I would like details regarding: ${item.title}`)}`;
+          const waUrl = `https://wa.me/2349020316094?text=${encodeURIComponent(`Hello Sarvene, I would like details regarding: ${item.title}`)}`;
           return (
             <div key={item.title} className="flex flex-col sm:flex-row gap-6 bg-[#111111] border border-white/10 p-6 rounded-xl">
               <div className="w-full sm:w-44 h-44 flex-shrink-0 overflow-hidden rounded-lg">
