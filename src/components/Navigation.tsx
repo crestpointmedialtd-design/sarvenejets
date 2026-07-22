@@ -29,7 +29,7 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-30 transition-all duration-500 ${
         isDarkText
           ? 'bg-sarvene-cream/95 backdrop-blur-md shadow-sm border-b border-sarvene-black/5'
           : 'bg-transparent'
@@ -104,7 +104,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-sarvene-cream/98 backdrop-blur-md shadow-lg py-6 px-6 border-b border-sarvene-black/10">
+          <div className="lg:hidden absolute top-full left-0 right-0 z-40 bg-sarvene-cream shadow-lg py-6 px-6 border-b border-sarvene-black/10">
             {navLinks.map((link) => (
               <a
                 key={link.label}

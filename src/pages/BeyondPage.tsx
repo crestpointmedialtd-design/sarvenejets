@@ -40,6 +40,14 @@ function EmailGate({ onGranted }: { onGranted: () => void }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !email.includes('@')) {
@@ -114,11 +122,12 @@ function Featured() {
   muted
   loop
   playsInline
+  webkit-playsinline="true"
+  preload="auto"
 >
   <source src="/featured-yacht.mp4" type="video/mp4" />
   <source src="/featured-yacht.mov" type="video/quicktime" />
 </video>
-      /
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
       <div className="relative h-full flex flex-col justify-end px-8 md:px-16 pb-16 md:pb-20">
         <p className="font-sans font-light text-xs tracking-[0.3em] uppercase text-gray-400 mb-3">
@@ -239,6 +248,18 @@ const CATEGORY_DETAILS = {
 function Categories() {
   const [activeCategory, setActiveCategory] = useState<CategoryKey | null>(null);
 
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    if (activeCategory) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [activeCategory]);
+
   const categories = [
     { key: 'safari' as CategoryKey, image: '/cat-safari.jpg', title: 'African Safaris', line: 'Private lodge allocations across East, Southern and Central corridors.' },
     { key: 'yacht' as CategoryKey, image: '/cat-yacht.jpg', title: 'The Yacht Programme', line: 'Sovereign vessel allocations across Mediterranean and Caribbean waters.' },
@@ -283,9 +304,9 @@ function Categories() {
 
       {/* Slide-Over Drawer */}
       {activeCategory && currentDetail && (
-        <div className="fixed inset-0 z-50 flex justify-end">
+        <div className="fixed inset-0 z-50 flex justify-end h-[100dvh]">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setActiveCategory(null)} />
-          <div className="relative w-full max-w-xl bg-[#121212] border-l border-white/20 p-8 md:p-12 overflow-y-auto h-full shadow-2xl flex flex-col justify-between">
+          <div className="relative w-full max-w-xl bg-[#121212] border-l border-white/20 p-8 md:p-12 overflow-y-auto h-full overscroll-contain shadow-2xl flex flex-col justify-between">
             <div>
               <button 
                 onClick={() => setActiveCategory(null)}
