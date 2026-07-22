@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { gsap } from 'gsap';
 import { ArrowRight } from 'lucide-react';
 
@@ -11,6 +12,7 @@ const heroSlides = [
 ];
 
 export default function Hero() {
+  const navigate = useNavigate();
   const heroRef = useRef<HTMLElement>(null);
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
@@ -107,9 +109,25 @@ export default function Hero() {
                   <button type="button" onClick={() => setPassengers(Math.min(50, passengers + 1))} className="py-3 px-2 font-sans text-sm text-sarvene-black/50">+</button>
                 </div>
               </div>
-              <a href="#contact" className="bg-sarvene-obsidian text-sarvene-cream py-3.5 px-6 font-sans text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-sarvene-matte transition-colors w-full md:w-auto text-center">
+              <button 
+                onClick={() => {
+                  const params = new URLSearchParams();
+                  if (from) params.set('from', from);
+                  if (to) params.set('to', to);
+                  if (date) params.set('date', date);
+                  params.set('passengers', passengers.toString());
+                  
+                  // Store in localStorage for Request Charter button access
+                  localStorage.setItem('sarvene_flight_data', JSON.stringify({
+                    from, to, date, passengers
+                  }));
+                  
+                  navigate(`/charterestimates?${params.toString()}`);
+                }}
+                className="bg-sarvene-obsidian text-sarvene-cream py-3.5 px-6 font-sans text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-sarvene-matte transition-colors w-full md:w-auto text-center"
+              >
                 Request Quote
-              </a>
+              </button>
             </div>
           </div>
 

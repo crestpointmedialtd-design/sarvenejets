@@ -5,11 +5,11 @@ import { Phone, Mail, MapPin, Send, CheckCircle, ArrowRight } from 'lucide-react
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Contact = ({ prefillRoute = '', prefillDate = '' }: { prefillRoute?: string; prefillDate?: string }) => {
+const Contact = ({ prefillRoute = '', prefillDate = '', prefillPassengers = '' }: { prefillRoute?: string; prefillDate?: string; prefillPassengers?: string }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', route: prefillRoute, date: prefillDate, message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', passengers: prefillPassengers, route: prefillRoute, date: prefillDate, message: '' });
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.contact-panel', { opacity: 0, y: 30 }, {
@@ -23,7 +23,24 @@ const Contact = ({ prefillRoute = '', prefillDate = '' }: { prefillRoute?: strin
   useEffect(() => {
   if (prefillRoute) setFormData(prev => ({ ...prev, route: prefillRoute }));
   if (prefillDate) setFormData(prev => ({ ...prev, date: prefillDate }));
-}, [prefillRoute, prefillDate]);
+  if (prefillPassengers) setFormData(prev => ({ ...prev, passengers: prefillPassengers }));
+}, [prefillRoute, prefillDate, prefillPassengers]);
+
+  // Read from localStorage for Request Charter button access from anywhere
+  useEffect(() => {
+    const storedData = localStorage.getItem('sarvene_flight_data');
+    if (storedData) {
+      const { from, to, date, passengers } = JSON.parse(storedData);
+      if (from && to) {
+        setFormData(prev => ({
+          ...prev,
+          route: `${from} to ${to}`,
+          date: date || prev.date,
+          passengers: passengers || prev.passengers
+        }));
+      }
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,7 +134,7 @@ const Contact = ({ prefillRoute = '', prefillDate = '' }: { prefillRoute?: strin
                   </div>
                   <div>
                     <label className="block font-sans text-[10px] tracking-[0.2em] uppercase text-sarvene-black/40 mb-2">Passengers</label>
-                    <input type="number" name="passengers" min={1} max={50}
+                    <input type="number" name="passengers" value={formData.passengers} onChange={handleChange} min={1} max={50}
                       className="w-full bg-transparent border-b border-sarvene-black/12 py-3 font-sans text-sm text-sarvene-black placeholder:text-sarvene-black/20 focus:border-sarvene-obsidian focus:outline-none transition-colors" placeholder="Number of passengers" />
                   </div>
                 </div>

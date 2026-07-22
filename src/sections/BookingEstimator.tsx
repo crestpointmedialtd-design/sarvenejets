@@ -390,6 +390,18 @@ const BookingEstimator = ({
     if (prefillTo) setTo(prefillTo);
   }, [prefillFrom, prefillTo]);
 
+  // Auto-calculate if both from and to are prefilled
+  useEffect(() => {
+    if (prefillFrom && prefillTo) {
+      setIsCalculating(true);
+      setResult(null);
+      setTimeout(() => {
+        setResult(calculateSarveneEstimate(prefillFrom, prefillTo));
+        setIsCalculating(false);
+      }, 400);
+    }
+  }, [prefillFrom, prefillTo]);
+
   const handleFromChange = (val: string) => {
     setFrom(val);
     setFromSuggestions(getAutocompleteSuggestions(val));
@@ -409,6 +421,12 @@ const BookingEstimator = ({
     if (!from.trim() || !to.trim()) return;
     setIsCalculating(true);
     setResult(null);
+    
+    // Store in localStorage for Request Charter button access
+    localStorage.setItem('sarvene_flight_data', JSON.stringify({
+      from, to, date: prefillDate, passengers: ''
+    }));
+    
     setTimeout(() => {
       setResult(calculateSarveneEstimate(from, to));
       setIsCalculating(false);
