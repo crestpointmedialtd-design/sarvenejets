@@ -36,7 +36,7 @@ const LagosDubai = () => (
         { label: 'Abuja to Nairobi', href: '/routes/abuja-to-nairobi', type: 'route' },
         { label: 'Cost of a Private Jet from Lagos to Dubai', href: '/insights/cost-lagos-to-dubai', type: 'insight' },
         { label: 'Private Jet vs First Class', href: '/insights/private-jet-vs-first-class', type: 'insight' },
-        { label: 'Get an Instant Estimate', href: '/#booking-estimator', type: 'estimator' },
+        { label: 'Get an Instant Estimate', href: '/charterestimates', type: 'estimator' },
         { label: 'Request a Charter', href: '/#contact', type: 'contact' },
       ]}
       faqs={[

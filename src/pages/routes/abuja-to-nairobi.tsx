@@ -36,7 +36,7 @@ const AbujaToNairobi = () => (
         { label: 'Lagos to Dubai', href: '/routes/lagos-to-dubai', type: 'route' },
         { label: 'Best Private Jet Routes from Lagos', href: '/insights/best-private-jet-routes-lagos', type: 'insight' },
         { label: 'How Private Jet Charter Works in Nigeria', href: '/insights/how-private-jet-charter-works-nigeria', type: 'insight' },
-        { label: 'Get an Instant Estimate', href: '/#booking-estimator', type: 'estimator' },
+        { label: 'Get an Instant Estimate', href: '/charterestimates', type: 'estimator' },
         { label: 'Request a Charter', href: '/#contact', type: 'contact' },
       ]}
       faqs={[

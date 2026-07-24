@@ -12,7 +12,6 @@ const routes = [
     to: 'Abuja',
     type: 'Domestic',
     time: '1 hour',
-    slug: '/routes/lagos-to-abuja',
     note: 'Nigeria\'s most-flown private route.',
   },
   {
@@ -20,7 +19,6 @@ const routes = [
     to: 'London',
     type: 'Intercontinental',
     time: '6.5 – 7 hours',
-    slug: '/routes/lagos-to-london',
     note: 'Non-stop on a heavy jet.',
   },
   {
@@ -28,7 +26,6 @@ const routes = [
     to: 'Dubai',
     type: 'Intercontinental',
     time: '6 – 8 hours',
-    slug: '/routes/lagos-to-dubai',
     note: 'Commerce, investment and movement.',
   },
   {
@@ -36,7 +33,6 @@ const routes = [
     to: 'Accra',
     type: 'Regional',
     time: 'Under 1 hour',
-    slug: '/routes/lagos-to-accra',
     note: 'West Africa\'s defining business corridor.',
   },
   {
@@ -44,7 +40,6 @@ const routes = [
     to: 'Nairobi',
     type: 'Pan-African',
     time: '~5 hours',
-    slug: '/routes/abuja-to-nairobi',
     note: 'Nigeria to East Africa\'s business hub.',
   },
 ];
@@ -88,8 +83,8 @@ const PopularRoutes = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-sarvene-black/8">
           {routes.map((route) => (
             <a
-              key={route.slug}
-              href={route.slug}
+              key={`${route.from}-${route.to}`}
+              href={`/charterestimates?from=${encodeURIComponent(route.from)}&to=${encodeURIComponent(route.to)}`}
               className="route-card group bg-white p-8 md:p-10 hover:bg-sarvene-cream/60 transition-colors flex flex-col"
             >
               <div className="flex items-center justify-between mb-6">
@@ -109,7 +104,7 @@ const PopularRoutes = () => {
               </p>
 
               <span className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.15em] uppercase text-sarvene-obsidian group-hover:gap-3 transition-all">
-                View Route <ArrowRight className="w-3 h-3" />
+                Get Estimate <ArrowRight className="w-3 h-3" />
               </span>
             </a>
           ))}

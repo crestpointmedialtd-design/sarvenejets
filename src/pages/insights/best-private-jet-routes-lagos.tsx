@@ -16,7 +16,7 @@ const BestRoutesLagos = () => (
         { label: 'Lagos to London Route', href: '/routes/lagos-to-london', type: 'route' },
         { label: 'Lagos to Dubai Route', href: '/routes/lagos-to-dubai', type: 'route' },
         { label: 'Lagos to Accra Route', href: '/routes/lagos-to-accra', type: 'route' },
-        { label: 'Get an Instant Estimate', href: '/#booking-estimator', type: 'estimator' },
+        { label: 'Get an Instant Estimate', href: '/charterestimates', type: 'estimator' },
         { label: 'Request a Charter', href: '/#contact', type: 'contact' },
       ]}
     >

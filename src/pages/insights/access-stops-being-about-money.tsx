@@ -12,7 +12,7 @@ const AccessStopsBeingAboutMoney = () => (
       readTime="5 min"
       relatedItems={[
         { label: 'Sarvene Beyond', href: '/beyond', type: 'insight' },
-        { label: 'Get an Instant Estimate', href: '/#booking-estimator', type: 'estimator' },
+        { label: 'Get an Instant Estimate', href: '/charterestimates', type: 'estimator' },
         { label: 'Request a Charter', href: '/#contact', type: 'contact' },
       ]}
     >

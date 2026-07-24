@@ -15,7 +15,7 @@ const JetVsFirstClass = () => (
         { label: 'Lagos to Dubai Route', href: '/routes/lagos-to-dubai', type: 'route' },
         { label: 'How Private Jet Charter Works in Nigeria', href: '/insights/how-private-jet-charter-works-nigeria', type: 'insight' },
         { label: 'Cost of a Private Jet from Lagos to London', href: '/insights/cost-private-jet-lagos-to-london', type: 'insight' },
-        { label: 'Get an Instant Estimate', href: '/#booking-estimator', type: 'estimator' },
+        { label: 'Get an Instant Estimate', href: '/charterestimates', type: 'estimator' },
         { label: 'Request a Charter', href: '/#contact', type: 'contact' },
       ]}
     >

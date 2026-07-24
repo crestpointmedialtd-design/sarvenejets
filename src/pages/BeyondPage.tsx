@@ -58,6 +58,20 @@ function EmailGate({ onGranted }: { onGranted: () => void }) {
     setIsSubmitting(true);
 
     try {
+      // Submit to Formspree
+      await fetch('https://formspree.io/f/mvzyjgly', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          _subject: 'Sarvene Beyond Access Request',
+          form_name: 'beyond-access'
+        })
+      });
+
       localStorage.setItem(BEYOND_ACCESS_KEY, 'granted');
       onGranted();
     } catch {

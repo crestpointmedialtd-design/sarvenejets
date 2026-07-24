@@ -15,7 +15,7 @@ const HowCharterWorks = () => (
         { label: 'Lagos to London Route', href: '/routes/lagos-to-london', type: 'route' },
         { label: 'Lagos to Accra Route', href: '/routes/lagos-to-accra', type: 'route' },
         { label: 'Private Jet vs First Class', href: '/insights/private-jet-vs-first-class', type: 'insight' },
-        { label: 'Get an Instant Estimate', href: '/#booking-estimator', type: 'estimator' },
+        { label: 'Get an Instant Estimate', href: '/charterestimates', type: 'estimator' },
         { label: 'Request a Charter', href: '/#contact', type: 'contact' },
       ]}
     >
