@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router';
 import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -11,7 +14,32 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isHomePage = typeof window !== 'undefined' && window.location.pathname === '/';
+  const isHomePage = location.pathname === '/';
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+
+    if (href.startsWith('#')) {
+      // Anchor link
+      const targetId = href.replace('#', '');
+      if (isHomePage) {
+        // On homepage: smooth scroll to element
+        const element = document.getElementById(targetId);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // On sub-page: navigate to homepage with hash
+        navigate(`/${href}`);
+      }
+    } else {
+      // Regular navigation
+      if (href.startsWith('/')) {
+        navigate(href);
+      } else {
+        window.location.href = href;
+      }
+    }
+  };
   
   // Outer pages with light backgrounds need dark text even when scrollY = 0
   const isDarkText = isScrolled || !isHomePage;
@@ -70,6 +98,7 @@ const Navigation = () => {
               <a
                 key={link.label}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`font-sans text-[11px] font-medium tracking-[0.15em] uppercase transition-colors ${
                   isDarkText
                     ? 'text-sarvene-black/70 hover:text-sarvene-obsidian'
@@ -85,6 +114,7 @@ const Navigation = () => {
           <div className="flex items-center gap-4">
             <a
               href={isHomePage ? '#contact' : '/#contact'}
+              onClick={(e) => handleNavClick(e, isHomePage ? '#contact' : '/#contact')}
               className={`hidden lg:inline-flex font-sans text-[11px] font-medium tracking-[0.15em] uppercase px-5 py-2.5 transition-colors ${
                 isDarkText
                   ? 'bg-sarvene-obsidian text-sarvene-cream hover:bg-sarvene-matte'
@@ -109,7 +139,7 @@ const Navigation = () => {
               <a
                 key={link.label}
                 href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="block font-sans text-[11px] tracking-[0.15em] uppercase text-sarvene-black/70 hover:text-sarvene-obsidian py-3 border-b border-sarvene-black/5"
               >
                 {link.label}
@@ -117,7 +147,7 @@ const Navigation = () => {
             ))}
             <a
               href={isHomePage ? '#contact' : '/#contact'}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => handleNavClick(e, isHomePage ? '#contact' : '/#contact')}
               className="block mt-4 font-sans text-[11px] tracking-[0.15em] uppercase bg-sarvene-obsidian text-sarvene-cream text-center py-3"
             >
               Request Charter

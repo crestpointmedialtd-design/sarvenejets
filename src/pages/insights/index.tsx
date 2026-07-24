@@ -3,6 +3,13 @@ import { ArrowRight } from 'lucide-react';
 
 const insights = [
   {
+    slug: '/insights/access-stops-being-about-money',
+    category: 'Beyond',
+    title: 'The Point Where Access Stops Being About Money',
+    excerpt: 'Beyond a certain level of wealth, the problem is no longer what you can afford. It is what you are seen doing, and by whom.',
+    readTime: '5 min',
+  },
+  {
     slug: '/insights/cost-private-jet-lagos-to-london',
     category: 'Pricing',
     title: 'Cost of a Private Jet from Lagos to London',
@@ -46,7 +53,7 @@ const insights = [
   },
 ];
 
-const categories = ['All', 'Pricing', 'Education', 'Industry'];
+const categories = ['All', 'Beyond', 'Pricing', 'Education', 'Industry'];
 
 const InsightsIndex = () => (
   <PageLayout

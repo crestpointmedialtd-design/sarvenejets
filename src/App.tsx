@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router';
+import { useEffect } from 'react';
 import Navigation from './components/Navigation';
 import Hero from './sections/Hero';
 import Services from './sections/Services';
@@ -35,10 +36,23 @@ import HowCharterWorks from './pages/insights/how-private-jet-charter-works-nige
 import JetVsFirstClass from './pages/insights/private-jet-vs-first-class';
 import BestRoutes from './pages/insights/best-private-jet-routes-lagos';
 import FloatingFleetVsHomeBased from './pages/insights/floating-fleet-vs-home-based-operators';
+import AccessStopsBeingAboutMoney from './pages/insights/access-stops-being-about-money';
 
 import ScrollToTop from './components/ScrollToTop';
 
 function HomePage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const elementId = location.hash.replace('#', '');
+      setTimeout(() => {
+        const element = document.getElementById(elementId);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, [location]);
+
   return (
     <div className="bg-sarvene-cream min-h-screen">
       <Navigation />
@@ -94,6 +108,7 @@ function App() {
         <Route path="/insights/private-jet-vs-first-class" element={<JetVsFirstClass />} />
         <Route path="/insights/best-private-jet-routes-lagos" element={<BestRoutes />} />
         <Route path="/insights/floating-fleet-vs-home-based-operators" element={<FloatingFleetVsHomeBased />} />
+        <Route path="/insights/access-stops-being-about-money" element={<AccessStopsBeingAboutMoney />} />
       </Routes>
     </BrowserRouter>
   );
