@@ -35,6 +35,8 @@ const Navigation = () => {
       // Regular navigation
       if (href.startsWith('/')) {
         navigate(href);
+        // Explicitly scroll to top on navigation
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       } else {
         window.location.href = href;
       }

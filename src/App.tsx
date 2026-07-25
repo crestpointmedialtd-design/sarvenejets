@@ -39,6 +39,7 @@ import FloatingFleetVsHomeBased from './pages/insights/floating-fleet-vs-home-ba
 import AccessStopsBeingAboutMoney from './pages/insights/access-stops-being-about-money';
 
 import ScrollToTop from './components/ScrollToTop';
+import GlobalScrollToTop from './components/GlobalScrollToTop';
 
 function HomePage() {
   const location = useLocation();
@@ -79,6 +80,7 @@ function HomePage() {
 function App() {
   return (
     <BrowserRouter>
+      <GlobalScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/charterestimates" element={<CharterEstimatesPage />} />
