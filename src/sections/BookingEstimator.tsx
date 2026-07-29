@@ -2,9 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Calculator, MessageSquare, ArrowRight } from 'lucide-react';
-import RangeGlobe from '../components/RangeGlobe';
-import FleetCategorySelector from '../components/FleetCategorySelector';
-import { SARVENE_FLEET, type JetModel } from '../data/fleetData';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -377,9 +374,6 @@ const BookingEstimator = ({
   const [result, setResult] = useState<ReturnType<typeof calculateSarveneEstimate> | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
   const [showAdvisor, setShowAdvisor] = useState(false);
-  const [selectedJet, setSelectedJet] = useState<JetModel | undefined>();
-  const [originCoords, setOriginCoords] = useState<{ lat: number; lng: number } | undefined>();
-  const [destCoords, setDestCoords] = useState<{ lat: number; lng: number } | undefined>();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -428,28 +422,14 @@ const BookingEstimator = ({
     setIsCalculating(true);
     setResult(null);
 
-    // Get coordinates for globe
-    const origin = findAirport(from);
-    const destination = findAirport(to);
-    if (origin) setOriginCoords({ lat: origin.lat, lng: origin.lon });
-    if (destination) setDestCoords({ lat: destination.lat, lng: destination.lon });
-
     // Store in localStorage for Request Charter button access
     localStorage.setItem('sarvene_flight_data', JSON.stringify({
       from, to, date: prefillDate, passengers: ''
     }));
 
     setTimeout(() => {
-      const estimateResult = calculateSarveneEstimate(from, to);
-      setResult(estimateResult);
+      setResult(calculateSarveneEstimate(from, to));
       setIsCalculating(false);
-
-      // Auto-select jet based on result
-      if (estimateResult && 'jetName' in estimateResult) {
-        const jetName = estimateResult.jetName;
-        const matchedJet = SARVENE_FLEET.find(jet => jet.name.includes(jetName.split(' ')[0]) || jet.name.includes(jetName));
-        if (matchedJet) setSelectedJet(matchedJet);
-      }
     }, 400);
   };
 
@@ -480,15 +460,6 @@ const BookingEstimator = ({
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
-
-          {/* Range Globe - Visual Centerpiece */}
-          <div className="estimator-panel bg-[#080808] border border-sarvene-black/6 p-0 overflow-hidden min-h-[500px]">
-            <RangeGlobe
-              origin={originCoords}
-              destination={destCoords}
-              selectedJet={selectedJet}
-            />
-          </div>
 
           {/* Estimator */}
           <div className="estimator-panel bg-white border border-sarvene-black/6 p-8 md:p-10">
@@ -591,16 +562,34 @@ const BookingEstimator = ({
             )}
           </div>
 
-          {/* Fleet Category Selector */}
-          <div className="estimator-panel bg-white border border-sarvene-black/6 p-8 md:p-10">
+          {/* Advisor */}
+          <div className="estimator-panel bg-sarvene-matte p-8 md:p-10 flex flex-col">
             <div className="flex items-center gap-3 mb-6">
-              <MessageSquare className="w-4 h-4 text-sarvene-obsidian/50" />
-              <p className="font-sans text-[11px] tracking-[0.25em] uppercase text-sarvene-black/40">Select Aircraft</p>
+              <MessageSquare className="w-4 h-4 text-sarvene-sage/50" />
+              <p className="font-sans text-[11px] tracking-[0.25em] uppercase text-white/40">Private Advisor</p>
             </div>
-            <FleetCategorySelector
-              onJetSelect={setSelectedJet}
-              selectedJetId={selectedJet?.id}
-            />
+            <h3 className="font-serif text-2xl text-white mb-4">Complex routing?</h3>
+            <p className="font-sans text-sm text-white/50 leading-relaxed mb-8">
+              Multi-leg itineraries, bespoke cargo, group coordination — our aviation advisors handle every detail.
+            </p>
+            <ul className="space-y-3 mb-10 flex-1">
+              {['Multi-leg global routing','Group charter coordination','Bespoke cargo & logistics','Airport slot procurement'].map(item => (
+                <li key={item} className="flex items-center gap-3 font-sans text-xs text-white/45">
+                  <span className="w-1 h-1 bg-sarvene-sage/50 rounded-full" />{item}
+                </li>
+              ))}
+            </ul>
+            {showAdvisor && (
+              <div className="mb-6 p-4 border border-sarvene-sage/15 bg-white/5">
+                <p className="font-sans text-xs text-white/60 leading-relaxed">
+                  Our advisors are available 24/7. Call +234 902 031 6094 or submit the charter form below.
+                </p>
+              </div>
+            )}
+            <button onClick={() => setShowAdvisor(true)}
+              className="w-full border border-white/15 text-white py-3.5 font-sans text-[11px] tracking-[0.15em] uppercase hover:bg-white hover:text-sarvene-matte transition-all">
+              Consult Advisor
+            </button>
           </div>
 
         </div>
