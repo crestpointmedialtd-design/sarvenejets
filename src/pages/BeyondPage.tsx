@@ -58,12 +58,11 @@ function EmailGate({ onGranted }: { onGranted: () => void }) {
     setIsSubmitting(true);
 
     try {
-      // Submit to Formspree
-      await fetch('https://formspree.io/f/mvzyjgly', {
+      // Submit to API endpoint
+      await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
         },
         body: JSON.stringify({
           email: email,

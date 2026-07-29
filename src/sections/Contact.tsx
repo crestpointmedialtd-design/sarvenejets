@@ -46,7 +46,7 @@ const Contact = ({ prefillRoute = '', prefillDate = '', prefillPassengers = '' }
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await fetch('https://formspree.io/f/mvzyjgly', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -56,7 +56,7 @@ const Contact = ({ prefillRoute = '', prefillDate = '', prefillPassengers = '' }
       });
       if (response.ok) {
         setIsSubmitted(true);
-        setFormData({ name: '', email: '', phone: '', route: '', date: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', passengers: '', route: '', date: '', message: '' });
         setTimeout(() => setIsSubmitted(false), 6000);
       }
     } catch (error) {
