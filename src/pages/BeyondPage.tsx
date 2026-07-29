@@ -468,6 +468,42 @@ function BeyondPage() {
     setHasAccess(granted);
   }, []);
 
+  // SEO Metadata
+  useEffect(() => {
+    document.title = 'Sarvene Beyond | Access By Arrangement';
+
+    // Update or create meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', 'Sarvene Beyond exists for what comes after money stops being the obstacle. Private membership, discreet arrangements, and friction-free access to world-class lifestyle experiences.');
+
+    // Update or create og:title
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (!ogTitle) {
+      ogTitle = document.createElement('meta');
+      ogTitle.setAttribute('property', 'og:title');
+      document.head.appendChild(ogTitle);
+    }
+    ogTitle.setAttribute('content', 'Sarvene Beyond — Access By Arrangement');
+
+    // Update or create og:description
+    let ogDescription = document.querySelector('meta[property="og:description"]');
+    if (!ogDescription) {
+      ogDescription = document.createElement('meta');
+      ogDescription.setAttribute('property', 'og:description');
+      document.head.appendChild(ogDescription);
+    }
+    ogDescription.setAttribute('content', 'Beyond a certain level of wealth, the problem is no longer what you can afford. Sarvene Beyond is the private membership arm of Sarvene Jets.');
+
+    return () => {
+      // Cleanup on unmount (optional)
+    };
+  }, []);
+
   const handleGranted = useCallback(() => setHasAccess(true), []);
 
   if (hasAccess === null) {
