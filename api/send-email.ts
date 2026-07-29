@@ -11,8 +11,8 @@ export default async function handler(req: any, res: any) {
 
   const { name, email, phone, passengers, route, date, message, form_name } = req.body;
 
-  // Create transporter with Zoho SMTP
-  const transporter = nodemailer.createTransporter({
+  // Create transporter with explicit connection timeouts
+  const transporter = nodemailer.createTransport({
     host: 'smtp.zoho.com',
     port: 465,
     secure: true,
@@ -20,10 +20,12 @@ export default async function handler(req: any, res: any) {
       user: 'charter@sarvenejets.com',
       pass: 'AmTs8tqgXmwT',
     },
+    connectionTimeout: 10000, // 10s timeout
+    greetingTimeout: 5000,
+    socketTimeout: 10000,
   });
 
   try {
-    // Build email content
     let emailContent = '';
     let subject = '';
 
@@ -48,17 +50,17 @@ export default async function handler(req: any, res: any) {
       `;
     }
 
-    // Send email
     await transporter.sendMail({
-      from: 'charter@sarvenejets.com',
+      from: '"Sarvene Jets" <charter@sarvenejets.com>',
       to: 'charter@sarvenejets.com',
+      replyTo: email || 'charter@sarvenejets.com',
       subject: subject,
       html: emailContent,
     });
 
-    res.status(200).json({ message: 'Email sent successfully' });
-  } catch (error) {
+    return res.status(200).json({ success: true, message: 'Email sent successfully' });
+  } catch (error: any) {
     console.error('Email sending error:', error);
-    res.status(500).json({ message: 'Failed to send email' });
+    return res.status(500).json({ success: false, message: error.message || 'Failed to send email' });
   }
 }
