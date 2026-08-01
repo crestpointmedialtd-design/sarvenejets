@@ -9,6 +9,7 @@ const Newsletter = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -20,10 +21,27 @@ const Newsletter = () => {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
-    setSubmitted(true);
+
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setEmail('');
+      }
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -42,18 +60,12 @@ const Newsletter = () => {
 
           {!submitted ? (
             <>
-              {/* Netlify form */}
               <form
-                name="newsletter"
-                method="POST"
-                data-netlify="true"
                 onSubmit={handleSubmit}
                 className="flex items-stretch max-w-xl w-full overflow-hidden mx-auto"
               >
-                <input type="hidden" name="form-name" value="newsletter" />
                 <input
                   type="email"
-                  name="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -62,9 +74,10 @@ const Newsletter = () => {
                 />
                 <button
                   type="submit"
-                  className="bg-sarvene-sage text-sarvene-black font-sans text-[11px] font-semibold tracking-[0.2em] uppercase px-8 py-4 hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                  disabled={isLoading}
+                  className="bg-sarvene-sage text-sarvene-black font-sans text-[11px] font-semibold tracking-[0.2em] uppercase px-8 py-4 hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50"
                 >
-                  Subscribe <ArrowRight className="w-3.5 h-3.5" />
+                  {isLoading ? 'Subscribing...' : <>Subscribe <ArrowRight className="w-3.5 h-3.5" /></>}
                 </button>
               </form>
 
