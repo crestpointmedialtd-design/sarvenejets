@@ -8,7 +8,6 @@ gsap.registerPlugin(ScrollTrigger);
 const tiers = [
   {
     name: 'Vantage',
-    hours: '25',
     label: 'Select',
     description: 'Capped hourly rates across all five aircraft categories with priority empty leg alerts.',
     features: [
@@ -23,7 +22,6 @@ const tiers = [
   },
   {
     name: 'Meridian',
-    hours: '50',
     label: 'Most Requested',
     description: 'Capped hourly rates with dedicated account manager and exclusive event invitations.',
     features: [
@@ -42,7 +40,6 @@ const tiers = [
   },
   {
     name: 'Zenith',
-    hours: '100',
     label: 'Sovereign',
     description: 'Ultimate tier with same-day priority booking, waived fuel surcharges, and first right of refusal.',
     features: [
@@ -134,14 +131,6 @@ const JetCard = () => {
 
             <h3 className="text-sarvene-black mb-3" style={{fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: '2rem'}}>{tier.name}</h3>
             <p className="font-sans text-sm text-sarvene-black/50 mb-8 leading-relaxed">{tier.description}</p>
-
-            {/* Hours figure in Montserrat — headings stay Cormorant, numbers are Montserrat */}
-            <div className="mb-8">
-              <span className="font-mont font-semibold" style={{fontSize: '3.5rem', lineHeight: 1, color: 'var(--color-sarvene-obsidian, #1a1a18)'}}>
-                {tier.hours}
-              </span>
-              <span className="font-sans text-sm text-sarvene-black/40 ml-3">hours / year</span>
-            </div>
 
             <ul className="space-y-3 mb-10">
               {tier.features.map((f) => (
