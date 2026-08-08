@@ -44,11 +44,10 @@ const tiers = [
     description: 'Ultimate tier with same-day priority booking, waived fuel surcharges, and first right of refusal.',
     features: [
       'Capped hourly rates across all five aircraft categories',
-      '48 hour booking window',
+      'Same day priority booking',
       'No peak day surcharges',
       '5% bonus credit on every top up',
       '7% liquidation fee on refund',
-      'Same day priority booking',
       'Waived fuel surcharge where applicable',
       'Annual empty leg credit',
       'Dedicated account manager',
