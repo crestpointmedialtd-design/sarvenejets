@@ -146,14 +146,40 @@ const airportDatabase: { city: string; iata: string; icao: string; country: stri
 ];
 
 const jetCategories = [
-  { name: 'Light Jet', rate: 5500, maxHours: 4.0, cruiseKt: 400, classRatio: 0.42, maxRangeNM: 1600, exampleAircraft: 'Phenom 300E' },
-  { name: 'Midsize Jet', rate: 6500, maxHours: 6.4, cruiseKt: 420, classRatio: 0.50, maxRangeNM: 2700, exampleAircraft: 'Citation XLS' },
-  { name: 'Heavy Jet', rate: 8000, maxHours: 8.7, cruiseKt: 450, classRatio: 0.59, maxRangeNM: 3900, exampleAircraft: 'Legacy 650' },
-  { name: 'Ultra Long Range / VIP', rate: 16000, maxHours: 24, cruiseKt: 480, classRatio: 1.0, maxRangeNM: 6000, exampleAircraft: 'Global 6000' },
+  { name: 'Light Jet', rate: 4950, maxHours: 4.0, cruiseKt: 400, classRatio: 0.42, maxRangeNM: 1600, exampleAircraft: 'Phenom 300E' },
+  { name: 'Midsize Jet', rate: 5225, maxHours: 6.4, cruiseKt: 420, classRatio: 0.50, maxRangeNM: 2700, exampleAircraft: 'Citation XLS' },
+  { name: 'Heavy Jet', rate: 7425, maxHours: 8.7, cruiseKt: 450, classRatio: 0.59, maxRangeNM: 3900, exampleAircraft: 'Legacy 650' },
+  { name: 'Ultra Long Range', rate: 15000, maxHours: 24, cruiseKt: 480, classRatio: 1.0, maxRangeNM: 6000, exampleAircraft: 'Global 6000' },
+  { name: 'VIP Airliners', rate: 30000, maxHours: 24, cruiseKt: 480, classRatio: 1.0, maxRangeNM: 6000, exampleAircraft: 'ACJ319' },
 ];
 
 // Approximate speed of sound at typical business-jet cruise altitude (~FL380-FL410, ISA conditions)
 const SPEED_OF_SOUND_KT = 573;
+
+// ============================================
+// REGION MULTIPLIERS (PLACEHOLDER VALUES)
+// ============================================
+// These multipliers are applied on top of base hourly rates
+// TODO: Replace with actual regional cost data when available
+const REGION_MULTIPLIERS: Record<string, number> = {
+  // Domestic (Nigeria) - baseline
+  'DOMESTIC': 1.0,
+  // West Africa - placeholder
+  'WEST_AFRICA': 1.0, // TODO: Update with actual multiplier
+  // East Africa - placeholder
+  'EAST_AFRICA': 1.0, // TODO: Update with actual multiplier
+  // Central Africa - placeholder
+  'CENTRAL_AFRICA': 1.0, // TODO: Update with actual multiplier
+};
+
+function getRegionMultiplier(icao: string): number {
+  // Determine region based on ICAO code prefix
+  if (icao.startsWith('DN')) return REGION_MULTIPLIERS['DOMESTIC']; // Nigeria
+  if (icao.startsWith('DG')) return REGION_MULTIPLIERS['WEST_AFRICA']; // Ghana
+  if (icao.startsWith('D')) return REGION_MULTIPLIERS['CENTRAL_AFRICA']; // Other Central Africa
+  if (icao.startsWith('HK') || icao.startsWith('HR') || icao.startsWith('HT')) return REGION_MULTIPLIERS['EAST_AFRICA']; // Kenya, Rwanda, Tanzania
+  return 1.0; // Default multiplier
+}
 
 // ============================================
 // REGIONAL PRICING MATRIX
