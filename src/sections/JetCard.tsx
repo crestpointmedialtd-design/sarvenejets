@@ -19,7 +19,7 @@ const tiers = [
       'Fixed hourly rates',
     ],
     highlighted: false,
-    whatsapp: 'https://wa.me/2349020316094?text=Hi%2C%20I%20am%20interested%20in%20the%20Sarvene%20Access%2025%20Jet%20Card%20programme%20and%20would%20like%20to%20book%20a%20private%20consultation.',
+    mailto: 'mailto:operations@sarvenejets.com?subject=Sarvene%20Jet%20Card%2C%20Vantage%20Enquiry&body=Hello%2C%20I%27m%20interested%20in%20the%20Sarvene%20Jet%20Card%2C%20Vantage%20tier%20at%20%24100%2C000%20minimum%20deposit.%20Please%20send%20me%20the%20next%20steps.%0A%0AName%3A%0APhone%3A',
   },
   {
     name: 'Access 50',
@@ -35,7 +35,7 @@ const tiers = [
       'Complimentary catering upgrades',
     ],
     highlighted: true,
-    whatsapp: 'https://wa.me/2349020316094?text=Hi%2C%20I%20am%20interested%20in%20the%20Sarvene%20Access%2050%20Jet%20Card%20programme%20and%20would%20like%20to%20book%20a%20private%20consultation.',
+    mailto: 'mailto:operations@sarvenejets.com?subject=Sarvene%20Jet%20Card%2C%20Meridian%20Enquiry&body=Hello%2C%20I%27m%20interested%20in%20the%20Sarvene%20Jet%20Card%2C%20Meridian%20tier%20at%20%24250%2C000%20minimum%20deposit.%20Please%20send%20me%20the%20next%20steps.%0A%0AName%3A%0APhone%3A',
   },
   {
     name: 'Access 100',
@@ -53,7 +53,7 @@ const tiers = [
       'Ground arrangements and travel coordination worldwide',
     ],
     highlighted: false,
-    whatsapp: 'https://wa.me/2349020316094?text=Hi%2C%20I%20am%20interested%20in%20the%20Sarvene%20Access%20100%20Jet%20Card%20programme%20and%20would%20like%20to%20book%20a%20private%20consultation.',
+    mailto: 'mailto:operations@sarvenejets.com?subject=Sarvene%20Jet%20Card%2C%20Zenith%20Enquiry&body=Hello%2C%20I%27m%20interested%20in%20the%20Sarvene%20Jet%20Card%2C%20Zenith%20tier%20at%20%241%2C000%2C000%20minimum%20deposit.%20Please%20send%20me%20the%20next%20steps.%0A%0AName%3A%0APhone%3A',
   },
 ];
 
@@ -147,11 +147,9 @@ const JetCard = () => {
 
             <div className="pt-6 border-t border-sarvene-black/8">
               <a
-                href={tier.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={tier.mailto}
                 className="group w-full bg-sarvene-obsidian text-sarvene-cream py-3.5 font-sans text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-sarvene-matte transition-colors flex items-center justify-center gap-2">
-                Book a Consultation <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                Select <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </a>
             </div>
           </div>
